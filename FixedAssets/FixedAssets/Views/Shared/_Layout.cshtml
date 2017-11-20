@@ -16,6 +16,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("Środki Trwałe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -23,6 +25,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Lista środków", "Index", "Assets")</li>
+                    <li>@Html.ActionLink("Rodzaj środka", "Index", "AssetTypes")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")

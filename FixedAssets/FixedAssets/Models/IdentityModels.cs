@@ -29,5 +29,11 @@ namespace FixedAssets.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Asset> T_Assets { get; set; }
+
+        public System.Data.Entity.DbSet<FixedAssets.Models.AssetType> AssetTypes { get; set; }
     }
+
+
 }
