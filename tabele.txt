@@ -1,0 +1,24 @@
+œrodki trwa³e
+
+Id
+Nazwa
+Rodzaj
+Stan
+Miejsce_uz (miejsce u¿ytkowania)
+Data_przyj (data przyjecia do u¿ytkowania)
+Wartosc_pocz (wartosc poczatkowa)
+Rodzaj_amort  (odnosnik do tabeli Rodzaj_amortyzacji)
+
+
+
+
+
+Rodzaj_amortyzacji    (wpiszemy jednorazow¹ - 100% i liniowa - 30%)
+Id
+Nazwa
+Procent
+
+
+
+
+
