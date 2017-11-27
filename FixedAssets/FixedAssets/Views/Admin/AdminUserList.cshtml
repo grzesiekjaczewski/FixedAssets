@@ -1,0 +1,30 @@
+﻿@model IEnumerable<FixedAssets.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "AdminUserList";
+}
+
+<h2>Lista użytkowników</h2>
+<table class="table">
+    <tr>
+        <th>Użytkownik</th>
+        <th>Email</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Role", "AdminUserRolesList", new { id = item.Id }) |
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+

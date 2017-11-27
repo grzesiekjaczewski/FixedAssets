@@ -65,6 +65,10 @@ namespace FixedAssets.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Imię, Nazwisko")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -109,4 +113,5 @@ namespace FixedAssets.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
 }

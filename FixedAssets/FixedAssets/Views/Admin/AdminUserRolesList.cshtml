@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FixedAssets.Models.Role>
+@*@model FixedAssets.Models.RoleCollection*@ 
+@{
+    ViewBag.Title = "Role użytkownika";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    Użytkownik
+                </th>
+                <th>
+                    @ViewBag.User.UserName
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Email
+                </th>
+                <th>
+                    @ViewBag.User.Email
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div>
+    </div>
+    <div>
+        Role użytkownika
+        <input id="UserId"
+               name="UserId"
+               type="hidden"
+               value=@ViewBag.User.Id />
+        <table class="table">
+        
+            @foreach (var item in @Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @*@Html.CheckBoxFor(modelItem => item.ActiveForUser)*@
+                        @if (item.ActiveForUser)
+                        {
+                            <input type="checkbox" name="@item.Name" value="1" checked>
+                        }
+                        else
+                        {
+                            <input type="checkbox" name="@item.Name" value="1">
+                        }
+                    </td>
+               </tr>
+            }
+        </table>
+    </div>
+    @*<div class="form-group">*@
+    <div class="row">
+        <div class="col-md-2">
+            <input type="submit" value="Zapisz" class="btn btn-default" />
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+            &nbsp
+        </div>
+        <div class="col-md-offset-2 col-md-2">
+           @Html.ActionLink("Powrót do listy", "AdminUserList")
+        </div>
+    </div>
+ }
+

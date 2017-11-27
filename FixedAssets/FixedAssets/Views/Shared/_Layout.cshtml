@@ -13,9 +13,15 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <!--
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    -->
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                    <span class="icon-bar"></span>
+                    }
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
@@ -23,11 +29,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!--
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Lista środków", "Index", "Assets")</li>
                     <li>@Html.ActionLink("Rodzaj środka", "Index", "AssetTypes")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    -->
+
+                    <li>@Html.ActionLink("Lista środków", "Index", "Assets")</li>
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                    <li>@Html.ActionLink("Admin. użytk.", "AdminUserList", "Admin")</li>
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -18,6 +18,8 @@ namespace FixedAssets.Models
         }
     }
 
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
