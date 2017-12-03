@@ -29,17 +29,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <!--
+                    @*
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Rodzaj środka", "Index", "AssetTypes")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    -->
+                    *@
 
                     <li>@Html.ActionLink("Lista środków", "Index", "Assets")</li>
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                    <li>@Html.ActionLink("Admin. użytk.", "AdminUserList", "Admin")</li>
+                        <li>@Html.ActionLink("Admin. użytk.", "AdminUserList", "Admin")</li>
                     }
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                 </ul>
@@ -57,6 +57,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/my-forms.js")
+    @*
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
+    *@
     @RenderSection("scripts", required: false)
 </body>
 </html>

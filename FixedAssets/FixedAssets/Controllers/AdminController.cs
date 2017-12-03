@@ -60,7 +60,6 @@ namespace FixedAssets.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
         public ActionResult AdminUserList()
         {
             var userList = UserManager.Users.OrderBy(m => m.UserName).ToList();
@@ -68,7 +67,6 @@ namespace FixedAssets.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
         public ActionResult AdminUserRolesList(Guid? id)
         {
             ApplicationUser user = UserManager.FindById(id.ToString());
@@ -97,13 +95,11 @@ namespace FixedAssets.Controllers
         }
         
         [Authorize(Roles = "Admin")]
-        //[AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AdminUserRolesList(FormCollection forms)
         {
             var userId = Request["UserId"];
-
             var roles = _db.Roles.OrderBy(x => x.Name).ToList();
             foreach (var role in roles)
             {
@@ -117,6 +113,13 @@ namespace FixedAssets.Controllers
                     UserManager.AddToRole(userId, role.Name);
                 }
             }
+            return RedirectToAction("AdminUserList");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(Guid? id)
+        {
+            //return View();
             return RedirectToAction("AdminUserList");
         }
 
