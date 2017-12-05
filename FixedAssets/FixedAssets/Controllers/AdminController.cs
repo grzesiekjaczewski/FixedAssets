@@ -119,7 +119,9 @@ namespace FixedAssets.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(Guid? id)
         {
-            //return View();
+            ApplicationUser user = UserManager.FindById(id.ToString());
+            UserManager.Delete(user);
+
             return RedirectToAction("AdminUserList");
         }
 

@@ -6,7 +6,12 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @Styles.Render("~/Content/jquery-ui/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery-ui")
+    
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -54,13 +59,5 @@
             <p>&copy; @DateTime.Now.Year - Katarzyna Jaczewska, Tomasz Nawrat</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/my-forms.js")
-    @*
-    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")
-    *@
-    @RenderSection("scripts", required: false)
 </body>
 </html>

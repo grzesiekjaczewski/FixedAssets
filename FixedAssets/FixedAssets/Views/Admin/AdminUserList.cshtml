@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<FixedAssets.Models.ApplicationUser>
-
+@Scripts.Render("~/Scripts/myforms.js")
 @{
     ViewBag.Title = "AdminUserList";
 }
@@ -22,18 +22,14 @@
             </td>
             <td>
                 @Html.ActionLink("Role", "AdminUserRolesList", new { id = item.Id }) |
-                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                <a href="#" onclick="actionDelete('@item.Id','@item.UserName')">Usuń</a>
+                
             </td>
         </tr>
     }
 </table>
 
-<div id="dialog" title="Basic dialog">
-    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+<div id="dialog-confirm" title="Usuwanie użytkownika?">
+    <p id="confirmchapter"><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Czy na pewno usunąć użytkownika?</p>
 </div>
 
-<script>
-  $( function() {
-    $( "#dialog" ).dialog();
-  } );
-</script>
