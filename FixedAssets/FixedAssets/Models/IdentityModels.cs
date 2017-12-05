@@ -18,8 +18,6 @@ namespace FixedAssets.Models
         }
     }
 
-
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -33,8 +31,9 @@ namespace FixedAssets.Models
         }
 
         public DbSet<Asset> T_Assets { get; set; }
-
-        public System.Data.Entity.DbSet<FixedAssets.Models.AssetType> AssetTypes { get; set; }
+        public DbSet<AssetLocation> T_AssetLocations { get; set; }
+        public DbSet<AssetType> T_AssetTypes { get; set; }
+        public DbSet<DepreciationType> T_DepreciationTypes { get; set; }
     }
 
 

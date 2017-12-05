@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201711202005314_migracja 1.Designer.cs">
       <DependentUpon>201711202005314_migracja 1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712052211337_New tabels asset location, depretiation type.cs" />
+    <Compile Include="Migrations\201712052211337_New tabels asset location, depretiation type.Designer.cs">
+      <DependentUpon>201712052211337_New tabels asset location, depretiation type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
@@ -321,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711202005314_migracja 1.resx">
       <DependentUpon>201711202005314_migracja 1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712052211337_New tabels asset location, depretiation type.resx">
+      <DependentUpon>201712052211337_New tabels asset location, depretiation type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

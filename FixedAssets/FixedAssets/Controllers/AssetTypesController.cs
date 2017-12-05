@@ -17,7 +17,7 @@ namespace FixedAssets.Controllers
         // GET: AssetTypes
         public ActionResult Index()
         {
-            return View(db.AssetTypes.ToList());
+            return View(db.T_AssetTypes.ToList());
         }
 
         // GET: AssetTypes/Details/5
@@ -27,7 +27,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.AssetTypes.Find(id);
+            AssetType assetType = db.T_AssetTypes.Find(id);
             if (assetType == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace FixedAssets.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.AssetTypes.Add(assetType);
+                db.T_AssetTypes.Add(assetType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.AssetTypes.Find(id);
+            AssetType assetType = db.T_AssetTypes.Find(id);
             if (assetType == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.AssetTypes.Find(id);
+            AssetType assetType = db.T_AssetTypes.Find(id);
             if (assetType == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace FixedAssets.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssetType assetType = db.AssetTypes.Find(id);
-            db.AssetTypes.Remove(assetType);
+            AssetType assetType = db.T_AssetTypes.Find(id);
+            db.T_AssetTypes.Remove(assetType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
