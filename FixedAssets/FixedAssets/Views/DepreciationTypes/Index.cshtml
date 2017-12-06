@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FixedAssets.Models.AssetType>
+﻿@model IEnumerable<FixedAssets.Models.DepreciationType>
 
 @{
     ViewBag.Title = "Index";
@@ -13,10 +13,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AssetTypeName)
+            @Html.DisplayNameFor(model => model.DepreciationTypeName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LowValueAsset)
+            @Html.DisplayNameFor(model => model.DepreciationRate)
         </th>
         <th></th>
     </tr>
@@ -24,10 +24,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AssetTypeName)
+            @Html.DisplayFor(modelItem => item.DepreciationTypeName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LowValueAsset)
+            @Html.DisplayFor(modelItem => item.DepreciationRate)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

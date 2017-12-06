@@ -10,107 +10,107 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
-    public class AssetTypesController : Controller
+    public class AssetLocationsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: AssetTypes
+        // GET: AssetLocations
         public ActionResult Index()
         {
-            return View(db.T_AssetTypes.ToList());
+            return View(db.T_AssetLocations.ToList());
         }
 
-        // GET: AssetTypes/Details/5
+        // GET: AssetLocations/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            AssetLocation assetLocation = db.T_AssetLocations.Find(id);
+            if (assetLocation == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(assetLocation);
         }
 
-        // GET: AssetTypes/Create
+        // GET: AssetLocations/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AssetTypes/Create
+        // POST: AssetLocations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Create([Bind(Include = "Id,LocationName")] AssetLocation assetLocation)
         {
             if (ModelState.IsValid)
             {
-                db.T_AssetTypes.Add(assetType);
+                db.T_AssetLocations.Add(assetLocation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(assetType);
+            return View(assetLocation);
         }
 
-        // GET: AssetTypes/Edit/5
+        // GET: AssetLocations/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            AssetLocation assetLocation = db.T_AssetLocations.Find(id);
+            if (assetLocation == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(assetLocation);
         }
 
-        // POST: AssetTypes/Edit/5
+        // POST: AssetLocations/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Edit([Bind(Include = "Id,LocationName")] AssetLocation assetLocation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assetType).State = EntityState.Modified;
+                db.Entry(assetLocation).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(assetType);
+            return View(assetLocation);
         }
 
-        // GET: AssetTypes/Delete/5
+        // GET: AssetLocations/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            AssetLocation assetLocation = db.T_AssetLocations.Find(id);
+            if (assetLocation == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(assetLocation);
         }
 
-        // POST: AssetTypes/Delete/5
+        // POST: AssetLocations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            db.T_AssetTypes.Remove(assetType);
+            AssetLocation assetLocation = db.T_AssetLocations.Find(id);
+            db.T_AssetLocations.Remove(assetLocation);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

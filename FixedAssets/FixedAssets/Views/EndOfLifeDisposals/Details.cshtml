@@ -1,0 +1,75 @@
+﻿@model FixedAssets.Models.EndOfLifeDisposal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EndOfLifeDisposal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndOfLifeReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndOfLifeReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposalCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposalCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposedOfBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposedOfBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

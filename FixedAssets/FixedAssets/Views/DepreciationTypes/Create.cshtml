@@ -1,4 +1,4 @@
-﻿@model FixedAssets.Models.AssetType
+﻿@model FixedAssets.Models.DepreciationType
 
 @{
     ViewBag.Title = "Create";
@@ -13,24 +13,22 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AssetType</h4>
+        <h4>DepreciationType</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.AssetTypeName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DepreciationTypeName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AssetTypeName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AssetTypeName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.DepreciationTypeName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DepreciationTypeName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LowValueAsset, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DepreciationRate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.LowValueAsset)
-                    @Html.ValidationMessageFor(model => model.LowValueAsset, "", new { @class = "text-danger" })
-                </div>
+                @Html.EditorFor(model => model.DepreciationRate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DepreciationRate, "", new { @class = "text-danger" })
             </div>
         </div>
 

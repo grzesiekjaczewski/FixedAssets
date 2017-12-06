@@ -11,15 +11,15 @@ namespace FixedAssets.Models
         [Key]
         public int Id { get; set; }
         public string AssetName { get; set; }
-        public List<AssetType> AssetTypes { get; set; }
-        public int Quantity { get; set; }
+        public string InventoryNo { get; set; }
+        public string ProofOfPurchase { get; set; }
         public List<AssetLocation> AssetLocations { get; set; }
         public DateTime StartUsingDate { get; set; }
         public decimal InitialValue { get; set; }
         public decimal AmortisedValue { get; set; }
-        public List<DepreciationType> DepreciationTypes { get; set; }
         public List<DepreciationCharge> DepreciationCharges { get; set; }
         public List<ChangeInValue> ChangeInValues { get; set; }
+        public List<EndOfLifeDisposal> EndOfLifeDisposals { get; set; }
         public bool Depreciated { get; set; }
         public bool IsUsed { get; set; }
     }
@@ -29,6 +29,8 @@ namespace FixedAssets.Models
         [Key]
         public int Id { get; set; }
         public string AssetTypeName { get; set; }
+        public bool LowValueAsset { get; set; }
+        public List<Asset> Assets { get; set; }
     }
 
     public class AssetLocation
@@ -44,6 +46,7 @@ namespace FixedAssets.Models
         public int Id { get; set; }
         public string DepreciationTypeName { get; set; }
         public decimal DepreciationRate { get; set; }
+        public List<Asset> Assets { get; set; }
     }
 
     public class DepreciationCharge
@@ -76,5 +79,16 @@ namespace FixedAssets.Models
         public List<ChangeInValue> ChangeInValues { get; set; }
     }
 
-
+    public class EndOfLifeDisposal
+    {
+        [Key]
+        public int Id { get; set; }
+        public int No { get; set; }
+        public int Year { get; set; }
+        public DateTime DisposalDate { get; set; }
+        public string EndOfLifeReason { get; set; }
+        public string CreatedBy { get; set; }
+        public string DisposalCompany { get; set; }
+        public string DisposedOfBy { get; set; }
+    }
 }

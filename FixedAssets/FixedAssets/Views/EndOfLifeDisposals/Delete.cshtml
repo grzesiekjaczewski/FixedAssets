@@ -1,0 +1,81 @@
+﻿@model FixedAssets.Models.EndOfLifeDisposal
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EndOfLifeDisposal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposalDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposalDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndOfLifeReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndOfLifeReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposalCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposalCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DisposedOfBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisposedOfBy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

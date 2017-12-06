@@ -18,9 +18,13 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    @if (Request.IsAuthenticated && (User.IsInRole("Supervisor") || User.IsInRole("Employee")))
+                    {
+                        <span class="icon-bar"></span>
+                    }
                     @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                    <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Supervisor"))
                     {
@@ -34,15 +38,19 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Lista środków", "Index", "Assets")</li>
+                    @if (Request.IsAuthenticated && (User.IsInRole("Supervisor") || User.IsInRole("Employee")))
+                    {
+                        <li>@Html.ActionLink("Utylizacja", "Index", "EndOfLifeDisposals")</li>
+                    }
                     @if (Request.IsAuthenticated && User.IsInRole("Supervisor"))
                     {
                         <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Administracja<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Utylizacja", "AdminUserList", "Admin")</li>
-                                <li>@Html.ActionLink("Lokalizacje", "AdminUserList", "Admin")</li>
+                                <li>@Html.ActionLink("Lokalizacje", "Index", "AssetLocations")</li>
                                 <li>@Html.ActionLink("Rodz.środków", "Index", "AssetTypes")</li>
-                                <li>@Html.ActionLink("Rodz.amort.", "AdminUserList", "Admin")</li>
+                                <li>@Html.ActionLink("Rodz.amort.", "Index", "DepreciationTypes")</li>
+                                <li>@Html.ActionLink("Powod.zm.wart.", "Index", "ReasonForChangings")</li>
                             </ul>
                         </li>
                     }

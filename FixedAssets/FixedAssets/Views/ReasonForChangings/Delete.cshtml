@@ -1,4 +1,4 @@
-﻿@model FixedAssets.Models.AssetType
+﻿@model FixedAssets.Models.ReasonForChanging
 
 @{
     ViewBag.Title = "Delete";
@@ -9,23 +9,15 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>AssetType</h4>
+    <h4>ReasonForChanging</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AssetTypeName)
+            @Html.DisplayNameFor(model => model.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssetTypeName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LowValueAsset)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LowValueAsset)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>

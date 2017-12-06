@@ -10,107 +10,107 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
-    public class AssetTypesController : Controller
+    public class DepreciationTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: AssetTypes
+        // GET: DepreciationTypes
         public ActionResult Index()
         {
-            return View(db.T_AssetTypes.ToList());
+            return View(db.T_DepreciationTypes.ToList());
         }
 
-        // GET: AssetTypes/Details/5
+        // GET: DepreciationTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            DepreciationType depreciationType = db.T_DepreciationTypes.Find(id);
+            if (depreciationType == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(depreciationType);
         }
 
-        // GET: AssetTypes/Create
+        // GET: DepreciationTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AssetTypes/Create
+        // POST: DepreciationTypes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Create([Bind(Include = "Id,DepreciationTypeName,DepreciationRate")] DepreciationType depreciationType)
         {
             if (ModelState.IsValid)
             {
-                db.T_AssetTypes.Add(assetType);
+                db.T_DepreciationTypes.Add(depreciationType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(assetType);
+            return View(depreciationType);
         }
 
-        // GET: AssetTypes/Edit/5
+        // GET: DepreciationTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            DepreciationType depreciationType = db.T_DepreciationTypes.Find(id);
+            if (depreciationType == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(depreciationType);
         }
 
-        // POST: AssetTypes/Edit/5
+        // POST: DepreciationTypes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Edit([Bind(Include = "Id,DepreciationTypeName,DepreciationRate")] DepreciationType depreciationType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assetType).State = EntityState.Modified;
+                db.Entry(depreciationType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(assetType);
+            return View(depreciationType);
         }
 
-        // GET: AssetTypes/Delete/5
+        // GET: DepreciationTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            DepreciationType depreciationType = db.T_DepreciationTypes.Find(id);
+            if (depreciationType == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(depreciationType);
         }
 
-        // POST: AssetTypes/Delete/5
+        // POST: DepreciationTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            db.T_AssetTypes.Remove(assetType);
+            DepreciationType depreciationType = db.T_DepreciationTypes.Find(id);
+            db.T_DepreciationTypes.Remove(depreciationType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

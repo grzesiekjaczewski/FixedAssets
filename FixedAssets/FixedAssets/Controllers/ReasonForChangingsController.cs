@@ -10,107 +10,107 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
-    public class AssetTypesController : Controller
+    public class ReasonForChangingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: AssetTypes
+        // GET: ReasonForChangings
         public ActionResult Index()
         {
-            return View(db.T_AssetTypes.ToList());
+            return View(db.T_ReasonForChangings.ToList());
         }
 
-        // GET: AssetTypes/Details/5
+        // GET: ReasonForChangings/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            ReasonForChanging reasonForChanging = db.T_ReasonForChangings.Find(id);
+            if (reasonForChanging == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(reasonForChanging);
         }
 
-        // GET: AssetTypes/Create
+        // GET: ReasonForChangings/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: AssetTypes/Create
+        // POST: ReasonForChangings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Create([Bind(Include = "Id,Description")] ReasonForChanging reasonForChanging)
         {
             if (ModelState.IsValid)
             {
-                db.T_AssetTypes.Add(assetType);
+                db.T_ReasonForChangings.Add(reasonForChanging);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(assetType);
+            return View(reasonForChanging);
         }
 
-        // GET: AssetTypes/Edit/5
+        // GET: ReasonForChangings/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            ReasonForChanging reasonForChanging = db.T_ReasonForChangings.Find(id);
+            if (reasonForChanging == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(reasonForChanging);
         }
 
-        // POST: AssetTypes/Edit/5
+        // POST: ReasonForChangings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Edit([Bind(Include = "Id,Description")] ReasonForChanging reasonForChanging)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(assetType).State = EntityState.Modified;
+                db.Entry(reasonForChanging).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(assetType);
+            return View(reasonForChanging);
         }
 
-        // GET: AssetTypes/Delete/5
+        // GET: ReasonForChangings/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            if (assetType == null)
+            ReasonForChanging reasonForChanging = db.T_ReasonForChangings.Find(id);
+            if (reasonForChanging == null)
             {
                 return HttpNotFound();
             }
-            return View(assetType);
+            return View(reasonForChanging);
         }
 
-        // POST: AssetTypes/Delete/5
+        // POST: ReasonForChangings/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AssetType assetType = db.T_AssetTypes.Find(id);
-            db.T_AssetTypes.Remove(assetType);
+            ReasonForChanging reasonForChanging = db.T_ReasonForChangings.Find(id);
+            db.T_ReasonForChangings.Remove(reasonForChanging);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

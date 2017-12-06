@@ -191,10 +191,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AssetLocationsController.cs" />
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\AssetTypesController.cs" />
+    <Compile Include="Controllers\DepreciationTypesController.cs" />
+    <Compile Include="Controllers\EndOfLifeDisposalsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReasonForChangingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,6 +221,18 @@
     <Compile Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs" />
     <Compile Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.Designer.cs">
       <DependentUpon>201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061803255_dodanie tabeli EndOfLifeDisposal.cs" />
+    <Compile Include="Migrations\201712061803255_dodanie tabeli EndOfLifeDisposal.Designer.cs">
+      <DependentUpon>201712061803255_dodanie tabeli EndOfLifeDisposal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061823078_Modyfikacja tabeli Assets.cs" />
+    <Compile Include="Migrations\201712061823078_Modyfikacja tabeli Assets.Designer.cs">
+      <DependentUpon>201712061823078_Modyfikacja tabeli Assets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712061848155_Zmiana w tablicach AssetType i Asset.cs" />
+    <Compile Include="Migrations\201712061848155_Zmiana w tablicach AssetType i Asset.Designer.cs">
+      <DependentUpon>201712061848155_Zmiana w tablicach AssetType i Asset.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -297,18 +313,38 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\AssetTypes\Create.cshtml" />
-    <Content Include="Views\AssetTypes\Delete.cshtml" />
-    <Content Include="Views\AssetTypes\Details.cshtml" />
-    <Content Include="Views\AssetTypes\Edit.cshtml" />
-    <Content Include="Views\AssetTypes\Index.cshtml" />
     <Content Include="Views\Admin\AdminUserList.cshtml" />
     <Content Include="Views\Admin\AdminUserRolesList.cshtml" />
+    <Content Include="Views\ReasonForChangings\Create.cshtml" />
+    <Content Include="Views\ReasonForChangings\Delete.cshtml" />
+    <Content Include="Views\ReasonForChangings\Details.cshtml" />
+    <Content Include="Views\ReasonForChangings\Edit.cshtml" />
+    <Content Include="Views\ReasonForChangings\Index.cshtml" />
+    <Content Include="Views\DepreciationTypes\Create.cshtml" />
+    <Content Include="Views\DepreciationTypes\Delete.cshtml" />
+    <Content Include="Views\DepreciationTypes\Details.cshtml" />
+    <Content Include="Views\DepreciationTypes\Edit.cshtml" />
+    <Content Include="Views\DepreciationTypes\Index.cshtml" />
+    <Content Include="Views\AssetLocations\Create.cshtml" />
+    <Content Include="Views\AssetLocations\Delete.cshtml" />
+    <Content Include="Views\AssetLocations\Details.cshtml" />
+    <Content Include="Views\AssetLocations\Edit.cshtml" />
+    <Content Include="Views\AssetLocations\Index.cshtml" />
+    <Content Include="Views\EndOfLifeDisposals\Create.cshtml" />
+    <Content Include="Views\EndOfLifeDisposals\Delete.cshtml" />
+    <Content Include="Views\EndOfLifeDisposals\Details.cshtml" />
+    <Content Include="Views\EndOfLifeDisposals\Edit.cshtml" />
+    <Content Include="Views\EndOfLifeDisposals\Index.cshtml" />
     <Content Include="Views\Assets\Create.cshtml" />
     <Content Include="Views\Assets\Delete.cshtml" />
     <Content Include="Views\Assets\Details.cshtml" />
     <Content Include="Views\Assets\Edit.cshtml" />
     <Content Include="Views\Assets\Index.cshtml" />
+    <Content Include="Views\AssetTypes\Create.cshtml" />
+    <Content Include="Views\AssetTypes\Delete.cshtml" />
+    <Content Include="Views\AssetTypes\Details.cshtml" />
+    <Content Include="Views\AssetTypes\Edit.cshtml" />
+    <Content Include="Views\AssetTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +378,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.resx">
       <DependentUpon>201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061803255_dodanie tabeli EndOfLifeDisposal.resx">
+      <DependentUpon>201712061803255_dodanie tabeli EndOfLifeDisposal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061823078_Modyfikacja tabeli Assets.resx">
+      <DependentUpon>201712061823078_Modyfikacja tabeli Assets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712061848155_Zmiana w tablicach AssetType i Asset.resx">
+      <DependentUpon>201712061848155_Zmiana w tablicach AssetType i Asset.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
