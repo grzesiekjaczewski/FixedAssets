@@ -294,13 +294,13 @@
     <Content Include="Views\AssetTypes\Details.cshtml" />
     <Content Include="Views\AssetTypes\Edit.cshtml" />
     <Content Include="Views\AssetTypes\Index.cshtml" />
+    <Content Include="Views\Admin\AdminUserList.cshtml" />
+    <Content Include="Views\Admin\AdminUserRolesList.cshtml" />
     <Content Include="Views\Assets\Create.cshtml" />
     <Content Include="Views\Assets\Delete.cshtml" />
     <Content Include="Views\Assets\Details.cshtml" />
     <Content Include="Views\Assets\Edit.cshtml" />
     <Content Include="Views\Assets\Index.cshtml" />
-    <Content Include="Views\Admin\AdminUserList.cshtml" />
-    <Content Include="Views\Admin\AdminUserRolesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
