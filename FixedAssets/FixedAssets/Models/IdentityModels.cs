@@ -34,6 +34,9 @@ namespace FixedAssets.Models
         public DbSet<AssetLocation> T_AssetLocations { get; set; }
         public DbSet<AssetType> T_AssetTypes { get; set; }
         public DbSet<DepreciationType> T_DepreciationTypes { get; set; }
+        public DbSet<DepreciationCharge> T_DepreciationCharges { get; set; }
+        public DbSet<ChangeInValue> T_ChangeInValues { get; set; }
+        public DbSet<ReasonForChanging> T_ReasonForChangings { get; set; }
     }
 
 

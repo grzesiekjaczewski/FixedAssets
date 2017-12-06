@@ -210,6 +210,14 @@
     <Compile Include="Migrations\201712052211337_New tabels asset location, depretiation type.Designer.cs">
       <DependentUpon>201712052211337_New tabels asset location, depretiation type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712060931369_new tables and correction of asset table.cs" />
+    <Compile Include="Migrations\201712060931369_new tables and correction of asset table.Designer.cs">
+      <DependentUpon>201712060931369_new tables and correction of asset table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs" />
+    <Compile Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.Designer.cs">
+      <DependentUpon>201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
@@ -328,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712052211337_New tabels asset location, depretiation type.resx">
       <DependentUpon>201712052211337_New tabels asset location, depretiation type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712060931369_new tables and correction of asset table.resx">
+      <DependentUpon>201712060931369_new tables and correction of asset table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.resx">
+      <DependentUpon>201712060941513_dodanie kolejnych tabel oraz poprawka w asset i changeinvalue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
