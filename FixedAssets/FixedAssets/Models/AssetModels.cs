@@ -10,17 +10,28 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
+        [Display(Name = "Nazwa")]
         public string AssetName { get; set; }
+        [Display(Name = "Nr inwent.")]
         public string InventoryNo { get; set; }
+        [Display(Name = "Dowód zakupu")]
         public string ProofOfPurchase { get; set; }
         public List<AssetLocation> AssetLocations { get; set; }
+        [Display(Name = "Przyjęto")]
+        //[DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime StartUsingDate { get; set; }
+        [Display(Name = "Wartość począt.")]
         public decimal InitialValue { get; set; }
+        [Display(Name = "Wartość umorzenia")]
         public decimal AmortisedValue { get; set; }
         public List<DepreciationCharge> DepreciationCharges { get; set; }
         public List<ChangeInValue> ChangeInValues { get; set; }
         public List<EndOfLifeDisposal> EndOfLifeDisposals { get; set; }
+        [Display(Name = "Zamortyzowany")]
         public bool Depreciated { get; set; }
+        [Display(Name = "W użyciu")]
         public bool IsUsed { get; set; }
     }
 

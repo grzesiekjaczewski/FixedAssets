@@ -19,20 +19,17 @@
             @Html.DisplayNameFor(model => model.InventoryNo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProofOfPurchase)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.StartUsingDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.InitialValue)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.AmortisedValue)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Depreciated)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.IsUsed)
         </th>
@@ -48,20 +45,17 @@
             @Html.DisplayFor(modelItem => item.InventoryNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProofOfPurchase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartUsingDate)
+            @Html.DisplayFor(modelItem => item.StartUsingDate, "{0:dd/MM/yyyy}")
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InitialValue)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.AmortisedValue)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Depreciated)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.IsUsed)
         </td>
