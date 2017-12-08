@@ -5,10 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Asset</h4>
+    <h4>Szczegóły dotyczące środka trwałego</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -43,7 +41,7 @@
             @Html.DisplayFor(model => model.StartUsingDate)
         </dd>
 
-        <dt>
+        <dt align="right">
             @Html.DisplayNameFor(model => model.InitialValue)
         </dt>
 
@@ -51,7 +49,7 @@
             @Html.DisplayFor(model => model.InitialValue)
         </dd>
 
-        <dt>
+        <dt align="right">
             @Html.DisplayNameFor(model => model.AmortisedValue)
         </dt>
 
@@ -76,32 +74,46 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DepreciationTypeId)
+            Lokalizacja środka
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DepreciationTypeId)
+           @ViewBag.AssetLocation
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AssetTypeId)
+            Rodzaj środka trwałego
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssetTypeId)
+            @ViewBag.AssetType
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AssetLocationId)
+            Rodzaj oraz stawka amortyzacji
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AssetLocationId)
+            @ViewBag.DepreciationType
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div>
+    <dl colspan = "2">
+        <dt>
+            @Html.ActionLink("Przegląd amortyzacji", "#")
+        </dt>
+        <dt>
+            @Html.ActionLink("Zmiany wartości środka", "#")
+        </dt>
+        <dt>
+            @Html.ActionLink("Dokumenty dotyczące utylizacji", "#")
+        </dt>
+    </dl>
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

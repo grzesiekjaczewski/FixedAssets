@@ -32,6 +32,14 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+            AssetLocation assetLocation = db.T_AssetLocations.Find(asset.AssetLocationId);
+            AssetType assetType = db.T_AssetTypes.Find(asset.AssetTypeId);
+            DepreciationType depreciationType = db.T_DepreciationTypes.Find(asset.DepreciationTypeId);
+
+            ViewBag.AssetLocation = assetLocation.Name;
+            ViewBag.AssetType = assetType.Name;
+            ViewBag.DepreciationType = depreciationType.Name;
+
             return View(asset);
         }
 

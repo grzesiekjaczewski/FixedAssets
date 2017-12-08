@@ -48,14 +48,6 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.StartUsingDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="StartUsingDate1" type="datetime" value="@Model.StartUsingDate.Day.ToString("00").@Model.StartUsingDate.Month.ToString("00").@Model.StartUsingDate.Year.ToString("0000")" />
-                <span class="field-validation-valid text-danger" data-valmsg-for="StartUsingDate1" data-valmsg-replace="true"></span>
-            </div>
-        </div>*@
-
         <div class="form-group">
             @Html.LabelFor(model => model.InitialValue, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -67,7 +59,6 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="AssetLocationId">Lokalizacja środka</label>
                 <div class="col-md-10">
-                    @*@Html.DropDownList("AssetLocations", null, new { @class = "form-control" })*@
                     @Html.DropDownListFor(model => model.AssetLocationId, (IEnumerable<SelectListItem>)ViewBag.AssetLocations, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.AssetLocationId)
                 </div>
