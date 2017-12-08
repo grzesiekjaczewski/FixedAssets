@@ -1,14 +1,14 @@
 ﻿@model FixedAssets.Models.AssetLocation
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>AssetLocation</h4>
+    <h4>Lokalizacja</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,6 +22,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edycja", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Powrót do listy", "Index")
 </p>
+
