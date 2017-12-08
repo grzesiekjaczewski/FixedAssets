@@ -58,9 +58,6 @@ namespace FixedAssets.Controllers
             asset.AmortisedValue = 0;
             asset.Depreciated = false;
 
-
-
-
             if (ModelState.IsValid)
             {
                 db.T_Assets.Add(asset);
@@ -83,7 +80,11 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
-            PopulateLocationsDropDownList(asset.AssetLocationId);
+
+            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
+            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
+            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
+
             return View(asset);
         }
 
@@ -96,6 +97,10 @@ namespace FixedAssets.Controllers
         {
             var startUsingDate = Request["StartUsingDate1"];
             asset.StartUsingDate = Logic.CalculateDate.StringToDate(startUsingDate, ".", "/", "-");
+
+            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
+            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
+            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
 
             if (ModelState.IsValid)
             {
@@ -132,13 +137,13 @@ namespace FixedAssets.Controllers
             return RedirectToAction("Index");
         }
 
-        private void PopulateLocationsDropDownList(object selectedLocation = null)
-        {
-            var locationQuery = from d in db.T_AssetLocations
-                                orderby d.Name
-                                select d;
-            ViewBag.LocationId = new SelectList(locationQuery, "Id", "LocationName", selectedLocation);
-        }
+        //private void PopulateLocationsDropDownList(object selectedLocation = null)
+        //{
+        //    var locationQuery = from d in db.T_AssetLocations
+        //                        orderby d.Name
+        //                        select d;
+        //    ViewBag.LocationId = new SelectList(locationQuery, "Id", "LocationName", selectedLocation);
+        //}
 
         protected override void Dispose(bool disposing)
         {

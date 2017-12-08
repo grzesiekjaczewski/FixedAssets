@@ -23,8 +23,10 @@ namespace FixedAssets.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime StartUsingDate { get; set; }
         [Display(Name = "Wartość począt.")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal InitialValue { get; set; }
         [Display(Name = "Wartość umorzenia")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal AmortisedValue { get; set; }
         public List<DepreciationCharge> DepreciationCharges { get; set; }
         public List<ChangeInValue> ChangeInValues { get; set; }
