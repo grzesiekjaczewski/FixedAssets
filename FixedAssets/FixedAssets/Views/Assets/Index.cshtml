@@ -1,36 +1,33 @@
 ﻿@model IEnumerable<FixedAssets.Models.Asset>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista środków trwałych";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Utwórz nowy", "Create") |
+    @Html.ActionLink("Plan amortyzacji", "#") |
+    @Html.ActionLink("Amortyzacja zbiorcza", "#") |
+    @Html.ActionLink("Podgląd amortyzacji", "#")
 </p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.AssetName)
         </th>
-        <th>
+        <th style="text-align: center;">
             @Html.DisplayNameFor(model => model.InventoryNo)
         </th>
-        <th>
+        <th style="text-align: center;">
             @Html.DisplayNameFor(model => model.StartUsingDate)
         </th>
-        <th>
+        <th style="text-align: right;">
             @Html.DisplayNameFor(model => model.InitialValue)
         </th>
-        @*<th>
-        @Html.DisplayNameFor(model => model.AmortisedValue)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Depreciated)
-        </th>*@
-        <th>
+        <th style="text-align: center;">
             @Html.DisplayNameFor(model => model.IsUsed)
         </th>
 
@@ -42,29 +39,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.AssetName)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.InventoryNo)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartUsingDate)
+        <td align="center">
+            @Html.DisplayFor(modelItem => item.StartUsingDate, "{0:dd.MM.yyyy}")
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InitialValue, "{0:dd.MM.yyyy}")
+        <td align="right" style="padding-right: 25px;">
+            @Html.DisplayFor(modelItem => item.InitialValue)
         </td>
-        @*<td>
-        @Html.DisplayFor(modelItem => item.AmortisedValue)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Depreciated)
-    </td>*@
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.IsUsed)
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
