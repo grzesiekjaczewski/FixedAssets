@@ -46,7 +46,7 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,LocationName")] AssetLocation assetLocation)
+        public ActionResult Create([Bind(Include = "Id,Name")] AssetLocation assetLocation)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,LocationName")] AssetLocation assetLocation)
+        public ActionResult Edit([Bind(Include = "Id,Name")] AssetLocation assetLocation)
         {
             if (ModelState.IsValid)
             {

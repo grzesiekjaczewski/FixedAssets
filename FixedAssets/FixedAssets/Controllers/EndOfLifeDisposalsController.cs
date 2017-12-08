@@ -17,7 +17,7 @@ namespace FixedAssets.Controllers
         // GET: EndOfLifeDisposals
         public ActionResult Index()
         {
-            return View(db.EndOfLifeDisposals.ToList());
+            return View(db.T_EndOfLifeDisposals.ToList());
         }
 
         // GET: EndOfLifeDisposals/Details/5
@@ -27,7 +27,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EndOfLifeDisposal endOfLifeDisposal = db.EndOfLifeDisposals.Find(id);
+            EndOfLifeDisposal endOfLifeDisposal = db.T_EndOfLifeDisposals.Find(id);
             if (endOfLifeDisposal == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace FixedAssets.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.EndOfLifeDisposals.Add(endOfLifeDisposal);
+                db.T_EndOfLifeDisposals.Add(endOfLifeDisposal);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EndOfLifeDisposal endOfLifeDisposal = db.EndOfLifeDisposals.Find(id);
+            EndOfLifeDisposal endOfLifeDisposal = db.T_EndOfLifeDisposals.Find(id);
             if (endOfLifeDisposal == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace FixedAssets.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EndOfLifeDisposal endOfLifeDisposal = db.EndOfLifeDisposals.Find(id);
+            EndOfLifeDisposal endOfLifeDisposal = db.T_EndOfLifeDisposals.Find(id);
             if (endOfLifeDisposal == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace FixedAssets.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EndOfLifeDisposal endOfLifeDisposal = db.EndOfLifeDisposals.Find(id);
-            db.EndOfLifeDisposals.Remove(endOfLifeDisposal);
+            EndOfLifeDisposal endOfLifeDisposal = db.T_EndOfLifeDisposals.Find(id);
+            db.T_EndOfLifeDisposals.Remove(endOfLifeDisposal);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -43,10 +43,18 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartUsingDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartUsingDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartUsingDate, "", new { @class = "text-danger" })
+                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="StartUsingDate1" type="datetime" value="@DateTime.Now.Day.ToString("00").@DateTime.Now.Month.ToString("00").@DateTime.Now.Year.ToString("0000")" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="StartUsingDate1" data-valmsg-replace="true"></span>
             </div>
         </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.StartUsingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="StartUsingDate1" type="datetime" value="@Model.StartUsingDate.Day.ToString("00").@Model.StartUsingDate.Month.ToString("00").@Model.StartUsingDate.Year.ToString("0000")" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="StartUsingDate1" data-valmsg-replace="true"></span>
+            </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.InitialValue, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -56,6 +64,35 @@
             </div>
         </div>
 
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="AssetLocationId">Lokalizacja środka</label>
+            <div class="col-md-10">
+                @*@Html.DropDownList("AssetLocations", null, new { @class = "form-control" })*@
+                @Html.DropDownListFor(model => model.AssetLocationId, (IEnumerable<SelectListItem>)ViewBag.AssetLocations, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AssetLocationId)
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="AssetTypeId">Rodzaj środka</label>
+        <div class="col-md-10">
+            @*@Html.DropDownList("AssetTypes", null, new { @class = "form-control" })*@
+            @Html.DropDownListFor(model => model.AssetTypeId, (IEnumerable<SelectListItem>)ViewBag.AssetTypes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.AssetTypeId)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2" for="DepreciationTypeId">Rodzaje/stawki amortyzacji</label>
+        <div class="col-md-10">
+            @*@Html.DropDownList("DepreciationTypes", null, new { @class = "form-control" })*@
+            @Html.DropDownListFor(model => model.DepreciationTypeId, (IEnumerable<SelectListItem>)ViewBag.DepreciationTypes, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepreciationTypeId)
+        </div>
+    </div>
+
+@*
         <div class="form-group">
             @Html.LabelFor(model => model.AmortisedValue, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -64,26 +101,50 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Depreciated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Depreciated)
-                    @Html.ValidationMessageFor(model => model.Depreciated, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Depreciated, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.Depreciated)
+                @Html.ValidationMessageFor(model => model.Depreciated, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsUsed, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsUsed)
-                    @Html.ValidationMessageFor(model => model.IsUsed, "", new { @class = "text-danger" })
-                </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsUsed, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsUsed)
+                @Html.ValidationMessageFor(model => model.IsUsed, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.DepreciationTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DepreciationTypeId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DepreciationTypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetTypeId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssetTypeId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AssetLocationId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AssetLocationId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AssetLocationId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

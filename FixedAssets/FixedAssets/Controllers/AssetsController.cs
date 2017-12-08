@@ -38,6 +38,10 @@ namespace FixedAssets.Controllers
         // GET: Assets/Create
         public ActionResult Create()
         {
+            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
+            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
+            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
+
             return View();
         }
 
@@ -46,8 +50,17 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AssetName,InventoryNo,ProofOfPurchase,StartUsingDate,InitialValue,AmortisedValue,Depreciated,IsUsed")] Asset asset)
+        public ActionResult Create([Bind(Include = "Id,AssetName,InventoryNo,ProofOfPurchase,StartUsingDate,InitialValue,AmortisedValue,Depreciated,IsUsed,DepreciationTypeId,AssetTypeId,AssetLocationId")] Asset asset, FormCollection forms)
         {
+            var startUsingDate = Request["StartUsingDate1"];
+            asset.StartUsingDate = Logic.CalculateDate.StringToDate(startUsingDate, ".", "/", "-");
+            asset.IsUsed = true;
+            asset.AmortisedValue = 0;
+            asset.Depreciated = false;
+
+
+
+
             if (ModelState.IsValid)
             {
                 db.T_Assets.Add(asset);
@@ -70,6 +83,7 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+            PopulateLocationsDropDownList(asset.AssetLocationId);
             return View(asset);
         }
 
@@ -78,8 +92,11 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AssetName,InventoryNo,ProofOfPurchase,StartUsingDate,InitialValue,AmortisedValue,Depreciated,IsUsed")] Asset asset)
+        public ActionResult Edit([Bind(Include = "Id,AssetName,InventoryNo,ProofOfPurchase,StartUsingDate,InitialValue,AmortisedValue,Depreciated,IsUsed,DepreciationTypeId,AssetTypeId,AssetLocationId")] Asset asset, FormCollection forms)
         {
+            var startUsingDate = Request["StartUsingDate1"];
+            asset.StartUsingDate = Logic.CalculateDate.StringToDate(startUsingDate, ".", "/", "-");
+
             if (ModelState.IsValid)
             {
                 db.Entry(asset).State = EntityState.Modified;
@@ -113,6 +130,14 @@ namespace FixedAssets.Controllers
             db.T_Assets.Remove(asset);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        private void PopulateLocationsDropDownList(object selectedLocation = null)
+        {
+            var locationQuery = from d in db.T_AssetLocations
+                                orderby d.Name
+                                select d;
+            ViewBag.LocationId = new SelectList(locationQuery, "Id", "LocationName", selectedLocation);
         }
 
         protected override void Dispose(bool disposing)

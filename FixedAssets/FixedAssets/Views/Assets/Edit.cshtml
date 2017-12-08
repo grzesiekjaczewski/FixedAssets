@@ -10,9 +10,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Asset</h4>
+        <h4>Edycja środeka trwałego</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -44,8 +44,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.StartUsingDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StartUsingDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartUsingDate, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.StartUsingDate, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.EditorFor(model => model.StartUsingDate, "{0:dd.MM.yyyy}", new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.StartUsingDate, "", new { @class = "text-danger" })*@
+                @*<input class="form-control text-box single-line" data-val="true" data-val-date="The field Przyjęto must be a date." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate" name="StartUsingDate" type="datetime" value='model.StartUsingDate' />*@
+                <input class="form-control text-box single-line" data-val="true" data-val-date="Powyższe pole mysi zawierać datę!." data-val-required="Pole Przyjęto jest wymagane." id="StartUsingDate1" name="StartUsingDate1" type="datetime" value="@Model.StartUsingDate.Day.ToString("00").@Model.StartUsingDate.Month.ToString("00").@Model.StartUsingDate.Year.ToString("0000")" />
+                <span class="field-validation-valid text-danger" data-valmsg-for="StartUsingDate1" data-valmsg-replace="true"></span>
             </div>
         </div>
 
@@ -56,24 +60,23 @@
                 @Html.ValidationMessageFor(model => model.InitialValue, "", new { @class = "text-danger" })
             </div>
         </div>
-
         @*<div class="form-group">
-            @Html.LabelFor(model => model.AmortisedValue, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AmortisedValue, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AmortisedValue, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Depreciated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Depreciated)
-                    @Html.ValidationMessageFor(model => model.Depreciated, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.AmortisedValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AmortisedValue, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AmortisedValue, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>*@
+            </div>*@
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Depreciated, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Depreciated)
+                        @Html.ValidationMessageFor(model => model.Depreciated, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.IsUsed, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -82,6 +85,14 @@
                     @Html.EditorFor(model => model.IsUsed)
                     @Html.ValidationMessageFor(model => model.IsUsed, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="AssetLocationId">Lokalizacja środka trwałego</label>
+            <div class="col-md-10">
+                @Html.DropDownList("AssetLocationId", String.Empty)
+                @Html.ValidationMessageFor(model => model.AssetLocationId)
             </div>
         </div>
 
@@ -100,3 +111,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

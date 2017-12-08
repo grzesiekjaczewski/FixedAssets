@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FixedAssets.Models
 {
@@ -17,7 +18,6 @@ namespace FixedAssets.Models
         public string InventoryNo { get; set; }
         [Display(Name = "Dowód zakupu")]
         public string ProofOfPurchase { get; set; }
-        public List<AssetLocation> AssetLocations { get; set; }
         [Display(Name = "Przyjęto")]
         //[DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
@@ -33,29 +33,33 @@ namespace FixedAssets.Models
         public bool Depreciated { get; set; }
         [Display(Name = "W użyciu")]
         public bool IsUsed { get; set; }
+        public int DepreciationTypeId { get; set; }
+        public int AssetTypeId { get; set; }
+        public int AssetLocationId { get; set; }
     }
 
-    public class AssetType
+    public class AssetType : IDbDictionary
     {
         [Key]
         public int Id { get; set; }
-        public string AssetTypeName { get; set; }
+        public string Name { get; set; }
         public bool LowValueAsset { get; set; }
         public List<Asset> Assets { get; set; }
     }
 
-    public class AssetLocation
+    public class AssetLocation : IDbDictionary
     {
         [Key]
         public int Id { get; set; }
-        public string LocationName { get; set; }
+        public string Name { get; set; }
+        public List<Asset> Assets { get; set; }
     }
 
-    public class DepreciationType
+    public class DepreciationType : IDbDictionary
     {
         [Key]
         public int Id { get; set; }
-        public string DepreciationTypeName { get; set; }
+        public string Name { get; set; }
         public decimal DepreciationRate { get; set; }
         public List<Asset> Assets { get; set; }
     }
@@ -102,4 +106,5 @@ namespace FixedAssets.Models
         public string DisposalCompany { get; set; }
         public string DisposedOfBy { get; set; }
     }
+
 }

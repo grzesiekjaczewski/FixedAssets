@@ -199,9 +199,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReasonForChangingsController.cs" />
+    <Compile Include="DataManipulation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\CalculateDate.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.Designer.cs">
       <DependentUpon>201711192016239_InitialCreate.cs</DependentUpon>
@@ -238,10 +240,23 @@
     <Compile Include="Migrations\201712061922161_zmiana w assets.Designer.cs">
       <DependentUpon>201712061922161_zmiana w assets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712080728185_Zmaina w tabeli assets.cs" />
+    <Compile Include="Migrations\201712080728185_Zmaina w tabeli assets.Designer.cs">
+      <DependentUpon>201712080728185_Zmaina w tabeli assets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712080818159_foreignkeys do modelu assets.cs" />
+    <Compile Include="Migrations\201712080818159_foreignkeys do modelu assets.Designer.cs">
+      <DependentUpon>201712080818159_foreignkeys do modelu assets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712081005138_Modyfikacja słowników.cs" />
+    <Compile Include="Migrations\201712081005138_Modyfikacja słowników.Designer.cs">
+      <DependentUpon>201712081005138_Modyfikacja słowników.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
     <Compile Include="Models\AssetModels.cs" />
+    <Compile Include="Models\IDbDictionary.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -281,6 +296,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\myforms.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -325,16 +344,6 @@
     <Content Include="Views\ReasonForChangings\Details.cshtml" />
     <Content Include="Views\ReasonForChangings\Edit.cshtml" />
     <Content Include="Views\ReasonForChangings\Index.cshtml" />
-    <Content Include="Views\DepreciationTypes\Create.cshtml" />
-    <Content Include="Views\DepreciationTypes\Delete.cshtml" />
-    <Content Include="Views\DepreciationTypes\Details.cshtml" />
-    <Content Include="Views\DepreciationTypes\Edit.cshtml" />
-    <Content Include="Views\DepreciationTypes\Index.cshtml" />
-    <Content Include="Views\AssetLocations\Create.cshtml" />
-    <Content Include="Views\AssetLocations\Delete.cshtml" />
-    <Content Include="Views\AssetLocations\Details.cshtml" />
-    <Content Include="Views\AssetLocations\Edit.cshtml" />
-    <Content Include="Views\AssetLocations\Index.cshtml" />
     <Content Include="Views\EndOfLifeDisposals\Create.cshtml" />
     <Content Include="Views\EndOfLifeDisposals\Delete.cshtml" />
     <Content Include="Views\EndOfLifeDisposals\Details.cshtml" />
@@ -345,11 +354,21 @@
     <Content Include="Views\Assets\Details.cshtml" />
     <Content Include="Views\Assets\Edit.cshtml" />
     <Content Include="Views\Assets\Index.cshtml" />
+    <Content Include="Views\AssetLocations\Create.cshtml" />
+    <Content Include="Views\AssetLocations\Delete.cshtml" />
+    <Content Include="Views\AssetLocations\Details.cshtml" />
+    <Content Include="Views\AssetLocations\Edit.cshtml" />
+    <Content Include="Views\AssetLocations\Index.cshtml" />
     <Content Include="Views\AssetTypes\Create.cshtml" />
     <Content Include="Views\AssetTypes\Delete.cshtml" />
     <Content Include="Views\AssetTypes\Details.cshtml" />
     <Content Include="Views\AssetTypes\Edit.cshtml" />
     <Content Include="Views\AssetTypes\Index.cshtml" />
+    <Content Include="Views\DepreciationTypes\Create.cshtml" />
+    <Content Include="Views\DepreciationTypes\Delete.cshtml" />
+    <Content Include="Views\DepreciationTypes\Details.cshtml" />
+    <Content Include="Views\DepreciationTypes\Edit.cshtml" />
+    <Content Include="Views\DepreciationTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -395,6 +414,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712061922161_zmiana w assets.resx">
       <DependentUpon>201712061922161_zmiana w assets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712080728185_Zmaina w tabeli assets.resx">
+      <DependentUpon>201712080728185_Zmaina w tabeli assets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712080818159_foreignkeys do modelu assets.resx">
+      <DependentUpon>201712080818159_foreignkeys do modelu assets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081005138_Modyfikacja słowników.resx">
+      <DependentUpon>201712081005138_Modyfikacja słowników.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

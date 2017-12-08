@@ -37,8 +37,9 @@ namespace FixedAssets.Models
         public DbSet<DepreciationCharge> T_DepreciationCharges { get; set; }
         public DbSet<ChangeInValue> T_ChangeInValues { get; set; }
         public DbSet<ReasonForChanging> T_ReasonForChangings { get; set; }
-
-        public System.Data.Entity.DbSet<FixedAssets.Models.EndOfLifeDisposal> EndOfLifeDisposals { get; set; }
+        public DbSet<EndOfLifeDisposal> T_EndOfLifeDisposals { get; set; }
+        
+        //public DbSet<IDbDictionary> T_IDbDictionary { get; set; }
     }
 
 

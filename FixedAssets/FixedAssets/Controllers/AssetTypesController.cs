@@ -46,7 +46,7 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Create([Bind(Include = "Id,Name,LowValueAsset")] AssetType assetType)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace FixedAssets.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AssetTypeName,LowValueAsset")] AssetType assetType)
+        public ActionResult Edit([Bind(Include = "Id,Name,LowValueAsset")] AssetType assetType)
         {
             if (ModelState.IsValid)
             {
