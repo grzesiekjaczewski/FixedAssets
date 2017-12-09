@@ -194,6 +194,8 @@
     <Compile Include="Controllers\AssetLocationsController.cs" />
     <Compile Include="Controllers\AssetsController.cs" />
     <Compile Include="Controllers\AssetTypesController.cs" />
+    <Compile Include="Controllers\Components\ControllerVieBagHelper.cs" />
+    <Compile Include="Controllers\DepreciationController.cs" />
     <Compile Include="Controllers\DepreciationTypesController.cs" />
     <Compile Include="Controllers\EndOfLifeDisposalsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -369,6 +371,8 @@
     <Content Include="Views\DepreciationTypes\Details.cshtml" />
     <Content Include="Views\DepreciationTypes\Edit.cshtml" />
     <Content Include="Views\DepreciationTypes\Index.cshtml" />
+    <Content Include="Views\Depreciation\Index.cshtml" />
+    <Content Include="Views\Depreciation\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

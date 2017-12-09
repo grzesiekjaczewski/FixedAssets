@@ -1,13 +1,10 @@
 ﻿@model FixedAssets.Models.Asset
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Amortyzacja środka trwałego";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Usuwanie środka trwałego</h2>
-
-<h3>Czy na pewno usunąc wskazany środek trwały?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -99,13 +96,24 @@
             @ViewBag.DepreciationType
         </dd>
     </dl>
+</div>
+<div>
+    <dl colspan="2">
+        <dt>
+            @Html.ActionLink("Plan amortyzacji środka", "#")
+        </dt>
+        <dt>
+            @Html.ActionLink("Naliczanie amortyzacji środka", "#")
+        </dt>
+        <dt>
+            @Html.ActionLink("Pdgląd amortyzacji", "#")
+        </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Usuń" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót do listy", "Index")
-        </div>
-    }
+    </dl>
+</div>
+<div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>

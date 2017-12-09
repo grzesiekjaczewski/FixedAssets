@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FixedAssets.Models;
+using FixedAssets.Controllers.Components;
 
 namespace FixedAssets.Controllers
 {
     public class AssetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ControllerVieBagHelper _controllerVieBagHelper = new ControllerVieBagHelper();
 
         // GET: Assets
         public ActionResult Index()
@@ -32,24 +34,14 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
-            AssetLocation assetLocation = db.T_AssetLocations.Find(asset.AssetLocationId);
-            AssetType assetType = db.T_AssetTypes.Find(asset.AssetTypeId);
-            DepreciationType depreciationType = db.T_DepreciationTypes.Find(asset.DepreciationTypeId);
-
-            ViewBag.AssetLocation = assetLocation.Name;
-            ViewBag.AssetType = assetType.Name;
-            ViewBag.DepreciationType = depreciationType.Name;
-
+            _controllerVieBagHelper.PrepareViewBagAssetDictionaryDescriptions(this, db, asset);
             return View(asset);
         }
 
         // GET: Assets/Create
         public ActionResult Create()
         {
-            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
-            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
-            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
-
+            _controllerVieBagHelper.PrepareViewBagDictionaryForEdit(this, db);
             return View();
         }
 
@@ -88,10 +80,7 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
-
-            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
-            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
-            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
+            _controllerVieBagHelper.PrepareViewBagDictionaryForEdit(this, db);
 
             return View(asset);
         }
@@ -105,10 +94,7 @@ namespace FixedAssets.Controllers
         {
             var startUsingDate = Request["StartUsingDate1"];
             asset.StartUsingDate = Logic.CalculateDate.StringToDate(startUsingDate, ".", "/", "-");
-
-            ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
-            ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
-            ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
+            _controllerVieBagHelper.PrepareViewBagDictionaryForEdit(this, db);
 
             if (ModelState.IsValid)
             {
@@ -131,6 +117,7 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+            _controllerVieBagHelper.PrepareViewBagAssetDictionaryDescriptions(this, db, asset);
             return View(asset);
         }
 
@@ -144,6 +131,24 @@ namespace FixedAssets.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //private void prepareViewBagDictionaryDescriptions(int assetLocationId, int assetTypeId, int depreciationTypeId)
+        //{
+        //    AssetLocation assetLocation = db.T_AssetLocations.Find(assetLocationId);
+        //    AssetType assetType = db.T_AssetTypes.Find(assetTypeId);
+        //    DepreciationType depreciationType = db.T_DepreciationTypes.Find(depreciationTypeId);
+
+        //    ViewBag.AssetLocation = assetLocation.Name;
+        //    ViewBag.AssetType = assetType.Name;
+        //    ViewBag.DepreciationType = depreciationType.Name;
+        //}
+
+        //private void prepareViewBagDictionaryForEdit()
+        //{
+        //    ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
+        //    ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
+        //    ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
+        //}
 
         //private void PopulateLocationsDropDownList(object selectedLocation = null)
         //{

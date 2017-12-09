@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Edycja środka trwałego</h2>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -97,12 +99,6 @@
     </div>
     <div>
         <dl colspan = "2">
-            <dt>
-                @Html.ActionLink("Plan amortyzacji środka", "#")
-            </dt>
-            <dt>
-                @Html.ActionLink("Naliczanie amortyzacji środka", "#")
-            </dt>
             <dt>
                 @Html.ActionLink("Utylizacja środka", "#")
             </dt>

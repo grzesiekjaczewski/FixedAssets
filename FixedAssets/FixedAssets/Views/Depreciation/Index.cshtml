@@ -1,0 +1,61 @@
+﻿@model IEnumerable<FixedAssets.Models.Asset>
+
+@{
+    ViewBag.Title = "Amortyzacja Środków";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Amortyzacja Środków</h2>
+
+<p>
+    @Html.ActionLink("Plan amortyzacji", "#") |
+    @Html.ActionLink("Amortyzacja zbiorcza", "#") |
+    @Html.ActionLink("Podgląd amortyzacji", "#")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AssetName)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.InventoryNo)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.StartUsingDate)
+        </th>
+        <th style="text-align: right;">
+            @Html.DisplayNameFor(model => model.InitialValue)
+        </th>
+        <th style="text-align: center;">
+            @Html.DisplayNameFor(model => model.IsUsed)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssetName)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.InventoryNo)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.StartUsingDate, "{0:dd.MM.yyyy}")
+            </td>
+            <td align="right" style="padding-right: 15px;">
+                @Html.DisplayFor(modelItem => item.InitialValue)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.IsUsed)
+            </td>
+
+            <td>
+                @Html.ActionLink("Szczegóły", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
