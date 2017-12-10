@@ -38,7 +38,8 @@ namespace FixedAssets.Models
         public DbSet<ChangeInValue> T_ChangeInValues { get; set; }
         public DbSet<ReasonForChanging> T_ReasonForChangings { get; set; }
         public DbSet<EndOfLifeDisposal> T_EndOfLifeDisposals { get; set; }
-        
+        public DbSet<MonthName> T_MonthNames { get; set; }
+
         //public DbSet<IDbDictionary> T_IDbDictionary { get; set; }
     }
 

@@ -9,7 +9,7 @@ namespace FixedAssets.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "FixedAssets.Models.ApplicationDbContext";
         }
 

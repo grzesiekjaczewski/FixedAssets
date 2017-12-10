@@ -1,4 +1,5 @@
 ﻿using FixedAssets.Controllers.Components;
+using FixedAssets.Logic;
 using FixedAssets.Models;
 using System;
 using System.Collections.Generic;
@@ -35,5 +36,47 @@ namespace FixedAssets.Controllers
             _controllerVieBagHelper.PrepareViewBagAssetDictionaryDescriptions(this, db, asset);
             return View(asset);
         }
+
+        public ActionResult DepreciationPlanParameters()
+        {
+            PrepareYearMonths prepareYearMonths = new PrepareYearMonths();
+            YearMonths yearMonths = prepareYearMonths.GetYearMonths();
+            yearMonths.Year = DateTime.Now.Year + 1;
+
+            return View(yearMonths);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DepreciationPlanParameters([Bind(Include = "Month, Year")] YearMonths yearMonths)
+        {
+            return RedirectToAction("DepreciationPlan", new { month = yearMonths.Month, year = yearMonths.Year });
+        }
+
+        public ActionResult DepreciationPlan(int month, int year)
+        {
+            return View();
+        }
+
+        public ActionResult DepreciationParameters()
+        {
+            return View();
+        }
+
+        public ActionResult Depreciation()
+        {
+            return View();
+        }
+
+        public ActionResult DepreciationViewParameters()
+        {
+            return View();
+        }
+
+        public ActionResult DepreciationView()
+        {
+            return View();
+        }
+
     }
 }

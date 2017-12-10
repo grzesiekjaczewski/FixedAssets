@@ -109,4 +109,12 @@ namespace FixedAssets.Models
         public string DisposedOfBy { get; set; }
     }
 
+    public class MonthName
+    {
+        [Key]
+        public int Id { get; set; }
+        public int No { get; set; }
+        public string Name { get; set; }
+    }
+
 }

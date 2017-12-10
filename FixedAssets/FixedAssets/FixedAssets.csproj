@@ -206,6 +206,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logic\CalculateDate.cs" />
+    <Compile Include="Logic\NotDbModels.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.Designer.cs">
       <DependentUpon>201711192016239_InitialCreate.cs</DependentUpon>
@@ -253,6 +254,18 @@
     <Compile Include="Migrations\201712081005138_Modyfikacja słowników.cs" />
     <Compile Include="Migrations\201712081005138_Modyfikacja słowników.Designer.cs">
       <DependentUpon>201712081005138_Modyfikacja słowników.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712092333298_sprawdzenie.cs" />
+    <Compile Include="Migrations\201712092333298_sprawdzenie.Designer.cs">
+      <DependentUpon>201712092333298_sprawdzenie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712092346038_test.cs" />
+    <Compile Include="Migrations\201712092346038_test.Designer.cs">
+      <DependentUpon>201712092346038_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712100027512_dodanie tabeli miesięcy.cs" />
+    <Compile Include="Migrations\201712100027512_dodanie tabeli miesięcy.Designer.cs">
+      <DependentUpon>201712100027512_dodanie tabeli miesięcy.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -302,7 +315,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\myforms.js" />
+    <Content Include="Scripts\myUserDeleteDialog.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -373,6 +386,18 @@
     <Content Include="Views\DepreciationTypes\Index.cshtml" />
     <Content Include="Views\Depreciation\Index.cshtml" />
     <Content Include="Views\Depreciation\Details.cshtml" />
+    <Content Include="Views\Depreciation\DepreciationPlanParameters.cshtml" />
+    <Content Include="Views\Depreciation\DepreciationPlan.cshtml" />
+    <Content Include="Views\Depreciation\DepreciationParameters.cshtml" />
+    <Content Include="Views\Depreciation\Depreciation.cshtml" />
+    <Content Include="Views\Depreciation\DepreciationViewParameters.cshtml" />
+    <Content Include="Views\Depreciation\DepreciationView.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciationParameters.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciation.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciationViewParameters.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciationView.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciationPlanParameters.cshtml" />
+    <Content Include="Views\Depreciation\AssetDepreciationPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,6 +452,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712081005138_Modyfikacja słowników.resx">
       <DependentUpon>201712081005138_Modyfikacja słowników.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712092333298_sprawdzenie.resx">
+      <DependentUpon>201712092333298_sprawdzenie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712092346038_test.resx">
+      <DependentUpon>201712092346038_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712100027512_dodanie tabeli miesięcy.resx">
+      <DependentUpon>201712100027512_dodanie tabeli miesięcy.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
