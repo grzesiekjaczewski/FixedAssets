@@ -11,6 +11,8 @@ using FixedAssets.Controllers.Components;
 
 namespace FixedAssets.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Employee, Supervisor")]
     public class AssetsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

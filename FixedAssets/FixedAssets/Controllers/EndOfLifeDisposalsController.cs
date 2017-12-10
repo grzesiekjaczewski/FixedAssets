@@ -10,6 +10,8 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Employee, Supervisor")]
     public class EndOfLifeDisposalsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

@@ -12,6 +12,7 @@ using FixedAssets.Models;
 namespace FixedAssets.Controllers
 {
     [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
 

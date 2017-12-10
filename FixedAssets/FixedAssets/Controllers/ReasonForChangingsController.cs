@@ -10,6 +10,8 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Supervisor")]
     public class ReasonForChangingsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

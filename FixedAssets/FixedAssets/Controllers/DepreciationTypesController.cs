@@ -10,6 +10,8 @@ using FixedAssets.Models;
 
 namespace FixedAssets.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Supervisor")]
     public class DepreciationTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

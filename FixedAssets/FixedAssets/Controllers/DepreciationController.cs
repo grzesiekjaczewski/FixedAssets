@@ -10,6 +10,8 @@ using System.Web.Mvc;
 
 namespace FixedAssets.Controllers
 {
+    [Authorize]
+    [Authorize(Roles = "Employee, Supervisor")]
     public class DepreciationController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

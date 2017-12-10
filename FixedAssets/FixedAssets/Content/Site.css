@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+p.under-menu {
+    height: 0px;
+}
+
+@media screen and (min-width: 768px) {
+    p.under-menu {
+        height: 50px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    p.under-menu {
+        height: 0px;
+    }
+}
+
+
+
