@@ -37,26 +37,47 @@ namespace FixedAssets.Controllers
             return View(asset);
         }
 
+
         public ActionResult DepreciationPlanParameters()
         {
             PrepareYearMonths prepareYearMonths = new PrepareYearMonths();
             YearMonths yearMonths = prepareYearMonths.GetYearMonths();
-            yearMonths.Year = DateTime.Now.Year + 1;
+            yearMonths.EndYear = DateTime.Now.Year + 1;
 
             return View(yearMonths);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DepreciationPlanParameters([Bind(Include = "Month, Year")] YearMonths yearMonths)
+        public ActionResult DepreciationPlanParameters([Bind(Include = "StartMonth, StartYear, EndMonth, EndYear")] YearMonths yearMonths)
         {
-            return RedirectToAction("DepreciationPlan", new { month = yearMonths.Month, year = yearMonths.Year });
+            return RedirectToAction("DepreciationPlan", new {
+                startMonth = yearMonths.StartMonth,
+                startYear = yearMonths.StartYear,
+                endMonth = yearMonths.EndMonth,
+                endYear = yearMonths.EndYear });
         }
 
-        public ActionResult DepreciationPlan(int month, int year)
+        public ActionResult DepreciationPlan(int startMonth, int startYear, int endMonth, int endYear)
         {
-            return View();
+            Depretiation depretiation = new Depretiation();
+            Dictionary<int, string> monthNames = DataManipulation.GetMonthNames(db);
+            Dictionary<int, DepreciationType> depreciationTypes = DataManipulation.GetDepreciationTypes(db);
+            List<Asset> assetList = DataManipulation.GetAssetList(db);
+            DepretiationPlanList depretiationPlanList = depretiation.CalculatePlan(startMonth, startYear, endMonth, endYear, monthNames);
+            depretiation.CalculatePlanForAssets(depretiationPlanList, assetList, depreciationTypes);
+
+            return View(depretiationPlanList);
         }
+      
+        //public ActionResult DepreciationPlan()
+        //{
+        //    Depretiation depretiation = new Depretiation();
+        //    DepretiationPlanList depretiationPlanList = depretiation.CalculatePlan(db);
+        //    return View(depretiationPlanList);
+        //}
+
+
 
         public ActionResult DepreciationParameters()
         {

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedAssets", "FixedAssets\FixedAssets.csproj", "{18361ACE-060B-4582-ADD6-EC23C9F86D5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestForFixesAssets", "UnitTestForFixesAssets\UnitTestForFixesAssets.csproj", "{44BBC29B-60C5-4F73-B910-2280227A69BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{18361ACE-060B-4582-ADD6-EC23C9F86D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18361ACE-060B-4582-ADD6-EC23C9F86D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18361ACE-060B-4582-ADD6-EC23C9F86D5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44BBC29B-60C5-4F73-B910-2280227A69BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44BBC29B-60C5-4F73-B910-2280227A69BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44BBC29B-60C5-4F73-B910-2280227A69BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44BBC29B-60C5-4F73-B910-2280227A69BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
