@@ -46,6 +46,10 @@ namespace FixedAssets
                 .ToDictionary(dc => dc.Year.ToString() + dc.Month.ToString("00") + dc.AssetId.ToString(), dc => dc.dc);
         }
 
+        static public List<DepreciationCharge> GetAssetDepreciationCharges(ApplicationDbContext db, int assetId)
+        {
+            return db.T_DepreciationCharges.Where(dc => dc.AssetId == assetId).OrderBy(dc => dc.Year).ThenBy(dc => dc.Month).ToList();
+        }
 
         static public bool CanProcessDepretiatin(DateTime prevDate, DateTime nextDate)
         {

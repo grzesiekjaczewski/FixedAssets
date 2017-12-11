@@ -82,12 +82,12 @@ namespace FixedAssets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DepreciationParameters([Bind(Include = "StartMonth, StartYear, EndMonth, EndYear")] YearMonths yearMonths)
+        public ActionResult DepreciationParameters([Bind(Include = "EndMonth, EndYear")] YearMonths yearMonths)
         {
             return RedirectToAction("Depreciation", new
             {
-                startMonth = yearMonths.StartMonth,
-                startYear = yearMonths.StartYear,
+                startMonth = 1,
+                startYear = 2015,
                 endMonth = yearMonths.EndMonth,
                 endYear = yearMonths.EndYear
             });
@@ -134,14 +134,66 @@ namespace FixedAssets.Controllers
             return View(depreciationPlanList);
         }
 
+        public ActionResult AssetDepreciationPlan(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Asset asset = db.T_Assets.Find(id);
+            if (asset == null)
+            {
+                return HttpNotFound();
+            }
+
+            Depreciation depreciation = new Depreciation();
+            AssetDataSet assetDataSet = new AssetDataSet(db, asset.Id);
+            AssetDepreciationPlan assetDepreciationPlan = depreciation.CalculateAssetDepreciationPlan(assetDataSet, asset, true);
+
+            return View(assetDepreciationPlan);
+        }
+
+
+        public ActionResult AssetDepreciationView(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Asset asset = db.T_Assets.Find(id);
+            if (asset == null)
+            {
+                return HttpNotFound();
+            }
+
+            Depreciation depreciation = new Depreciation();
+            AssetDataSet assetDataSet = new AssetDataSet(db, asset.Id);
+            AssetDepreciationPlan assetDepreciationPlan = depreciation.CalculateAssetDepreciationPlan(assetDataSet, asset, false);
+
+            return View(assetDepreciationPlan);
+        }
+
+    }
+
+    public class AssetDataSet
+    {
+        public AssetDataSet() {}
+
+        public AssetDataSet(ApplicationDbContext db, int assetId)
+        {
+            MonthNames = DataManipulation.GetMonthNames(db);
+            DepreciationTypes = DataManipulation.GetDepreciationTypes(db);
+            DepreciationCharges = DataManipulation.GetAssetDepreciationCharges(db, assetId);
+        }
+
+        public Dictionary<int, string> MonthNames;
+        public Dictionary<int, DepreciationType> DepreciationTypes;
+        public List<DepreciationCharge> DepreciationCharges;
     }
 
     public class MyDataSet
     {
-        public MyDataSet()
-        {
-
-        }
+        public MyDataSet() {}
 
         public MyDataSet(ApplicationDbContext db)
         {

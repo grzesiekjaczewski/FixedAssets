@@ -21,47 +21,41 @@
 
     @foreach (var item in Model.DepreciationPlans)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MonthYear)
-            </td>
-            <td align="right" style="padding-right: 15px;">
-                @Html.DisplayFor(modelItem => item.CurrentCharge)
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <table class="table" style="max-width:500px;">
-                    @foreach (var item1 in item.Depreciacions)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item1.AssetName)
-                            </td>
-                            <td align="right" style="padding-right: 15px;">
-                                @Html.DisplayFor(modelItem => item1.CurrentCharge)
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </td>
-        </tr>
+        if (item.CurrentCharge != 0)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonthYear)
+                </td>
+                <td align="right" style="padding-right: 15px;">
+                    @Html.DisplayFor(modelItem => item.CurrentCharge)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table class="table" style="max-width:500px;">
+                        @foreach (var item1 in item.Depreciacions)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item1.AssetName)
+                                </td>
+                                <td align="right" style="padding-right: 15px;">
+                                    @Html.DisplayFor(modelItem => item1.CurrentCharge)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
     }
 
 </table>
 
 <table class="table" style="max-width:500px;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th style="text-align: right;">
-
-        </th>
-    </tr>
-
-    <tr>
-        <td></td>
+        <td>@Html.DisplayNameFor(model => model.Total)</td>
         <td align="right" style="padding-right: 15px;">
             @Html.DisplayFor(model => model.TotalCurrentCharge)
         </td>

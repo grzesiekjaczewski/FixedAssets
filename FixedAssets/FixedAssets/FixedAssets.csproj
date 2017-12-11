@@ -409,11 +409,7 @@
     <Content Include="Views\Depreciation\Depreciation.cshtml" />
     <Content Include="Views\Depreciation\DepreciationViewParameters.cshtml" />
     <Content Include="Views\Depreciation\DepreciationView.cshtml" />
-    <Content Include="Views\Depreciation\AssetDepreciationParameters.cshtml" />
-    <Content Include="Views\Depreciation\AssetDepreciation.cshtml" />
-    <Content Include="Views\Depreciation\AssetDepreciationViewParameters.cshtml" />
     <Content Include="Views\Depreciation\AssetDepreciationView.cshtml" />
-    <Content Include="Views\Depreciation\AssetDepreciationPlanParameters.cshtml" />
     <Content Include="Views\Depreciation\AssetDepreciationPlan.cshtml" />
   </ItemGroup>
   <ItemGroup>

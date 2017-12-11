@@ -112,13 +112,13 @@
 <div>
     <dl colspan="2">
         <dt>
-            @Html.ActionLink("Plan amortyzacji środka", "#")
+            @Html.ActionLink("Plan amortyzacji środka", "AssetDepreciationPlan", new { id = Model.Id })
         </dt>
         @*<dt>
             @Html.ActionLink("Naliczanie amortyzacji środka", "#")
         </dt>*@
         <dt>
-            @Html.ActionLink("Pdgląd amortyzacji", "#")
+            @Html.ActionLink("Pdgląd amortyzacji wykonanej", "AssetDepreciationView", new { id = Model.Id })
         </dt>
 
     </dl>

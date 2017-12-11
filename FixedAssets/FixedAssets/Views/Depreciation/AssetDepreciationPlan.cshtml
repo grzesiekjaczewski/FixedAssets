@@ -1,4 +1,4 @@
-﻿
+﻿@model FixedAssets.Logic.AssetDepreciationPlan
 @{
     ViewBag.Title = "AssetDepreciationPlan";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,5 +7,131 @@
 {
     <p class="under-menu"><br /></p>
 }
-<h2>AssetDepreciationPlan</h2>
+<h2>Plan Amortyzacja środka trwałego</h2>
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.AssetName)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.AssetName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.InitialValue)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.InitialValue)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.StartMonth)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.StartMonth)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.DepreciationRate)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.DepreciationRate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.YearCharge)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.YearCharge)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.MonthlyCharge)
+            </td>
+
+            <td align="right">
+                @Html.DisplayFor(model => model.MonthlyCharge)
+            </td>
+        </tr>
+</table>
+</div>
+<div>
+    <p>Tabela przedstawia odpisy amortyzacyjne w poszczególnych miesiącach</p>
+</div>
+<div>
+    <table class="table">
+        <tr>
+            <th style="width: 5%;">
+                Lp.
+            </th>
+            <th style="text-align: left; width: 25%;">
+                miesiąc/rok
+            </th>
+            <th style="text-align: right; width: 20%;">
+                kwota odpisów
+            </th>
+            <th style="text-align: right; width: 20%;">
+                kwota odpisów narastajaco
+            </th>
+            <th style="text-align: right; width: 20%;">
+                kwota pozostała do zamortyzowania
+            </th>
+        </tr>
+        @foreach (var item in Model.AssetDepreciationYearPlans)
+        {
+            <tr>
+                <td colspan="5">
+                    <b>Rok @Html.DisplayFor(modelItem => item.Year) - łączny odpis: @Html.DisplayFor(modelItem => item.TotalYearCharge) zł</b>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <table class="table">
+                        @foreach (var item1 in item.AssetDepreciationMonthPlans)
+                        {
+                            <tr>
+                                <td style="width: 5%;">
+                                    @Html.DisplayFor(modelItem => item1.No)
+                                </td>
+                                <td style="text-align: left; width: 25%;">
+                                    @Html.DisplayFor(modelItem => item1.MonthYear)
+                                </td>
+                                <td style="text-align: right; width: 20%;">
+                                    @Html.DisplayFor(modelItem => item1.CurrentCharge)
+                                </td>
+                                <td style="text-align: right; width: 20%;">
+                                    @Html.DisplayFor(modelItem => item1.CumulativelyCharge)
+                                </td>
+                                <td style="text-align: right; width: 20%;">
+                                    @Html.DisplayFor(modelItem => item1.RemainingAmount)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<div>
+    @Html.ActionLink("Powrót do listy", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
 

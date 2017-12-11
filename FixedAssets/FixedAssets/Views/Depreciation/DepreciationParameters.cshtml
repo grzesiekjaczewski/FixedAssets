@@ -8,7 +8,6 @@
     <p class="under-menu"><br /></p>
 }
 <h2>Parametry naliczania amortyzacji zbiorczej</h2>
-<h4>Odpisy zostaną naliczone tylko dla śroków, które nie były amortyzowane za wskazany okres</h4>
 
 @using (Html.BeginForm())
 {
@@ -19,29 +18,14 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StartMonth, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-3">
-                @Html.DropDownListFor(model => model.StartMonth, new SelectList(Model.StartMonths, "No", "No"), new { @class = "form-control" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartYear, htmlAttributes: new { @class = "control-label col-md-3" })
-            <div class="col-md-3">
-                @Html.DropDownListFor(model => model.StartYear, new SelectList(Model.StartYears, "No", "No"), new { @class = "form-control" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndMonth, htmlAttributes: new { @class = "control-label col-md-3" })
+            Miesiąc naliczenia amortyzacji
             <div class="col-md-3">
                 @Html.DropDownListFor(model => model.EndMonth, new SelectList(Model.EndMonths, "No", "No"), new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EndYear, htmlAttributes: new { @class = "control-label col-md-3" })
+            Rok naliczenia amortyzacji
             <div class="col-md-3">
                 @Html.DropDownListFor(model => model.EndYear, new SelectList(Model.EndYears, "No", "No"), new { @class = "form-control" })
             </div>

@@ -62,22 +62,7 @@ namespace FixedAssets.Logic
         public void SetForDepreciationView()
         {
             StartMonth = 1;
-
-            //if (StartMonth > 1)
-            //{
-            //    StartMonth--;
-            //    EndMonth--;
-            //    StartYear--;
-            //}
-            //else
-            //{
-            //    StartMonth = 1;
-            //    EndMonth = 1;
-            //    StartYear-=2;
-            //    EndYear--;
-            //}
         }
-
     }
 
     public class PrepareYearMonths
@@ -114,7 +99,6 @@ namespace FixedAssets.Logic
             CurrentCharge = 0;
             CumulativelyCharge = 0;
             RemainingAmount = 0;
-
             Depreciacions = new List<DepreciationItem>();
         }
 
@@ -136,8 +120,10 @@ namespace FixedAssets.Logic
     {
         public DepreciationPlanList()
         {
-            DepreciationPlans = new List<DepreciationPlan>();
             TotalCurrentCharge = 0;
+            TotalCumulativelyCharge = 0;
+            TotalRemainingAmount = 0;
+            DepreciationPlans = new List<DepreciationPlan>();
         }
 
         public int StartMonth { get; set; }
@@ -167,6 +153,13 @@ namespace FixedAssets.Logic
 
     public class DepreciationItem
     {
+        public DepreciationItem()
+        {
+            CurrentCharge = 0;
+            CumulativelyCharge = 0;
+            RemainingAmount = 0;
+        }
+
         [Display(Name = "Środek trwały")]
         public string AssetName { get; set; }
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
@@ -176,4 +169,77 @@ namespace FixedAssets.Logic
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal RemainingAmount { get; set; }
     }
+
+    public class AssetDepreciationPlan
+    {
+        public AssetDepreciationPlan()
+        {
+            TotalCurrentCharge = 0;
+            TotalCumulativelyCharge = 0;
+            TotalRemainingAmount = 0;
+
+            AssetDepreciationYearPlans = new List<AssetDepreciationYearPlan>();
+        }
+
+        [Display(Name = "Nazwa środka trwałego")]
+        public string AssetName { get; set; }
+        [Display(Name = "Wartość początkowa środka trwałego")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal InitialValue { get; set; }
+        [Display(Name = "Miesiąc rozpoczęcia amortyzacji")]
+        public string StartMonth { get; set; }
+        [Display(Name = "Stawka amortyzacyjna")]
+        public string DepreciationRate { get; set; }
+        [Display(Name = "Roczny odpis amortyzacyjny")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal YearCharge { get; set; }
+        [Display(Name = "Miesięczny odpis amortyzacyjny")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal MonthlyCharge { get; set; }
+
+        [Display(Name = "Podsumowanie")]
+        public string Total { get; set; }
+        [Display(Name = "Watrość amortyzacji")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalCurrentCharge { get; set; }
+        [Display(Name = "Amortyzacja narastająco")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalCumulativelyCharge { get; set; }
+        [Display(Name = "Pozostało do umorzenia")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalRemainingAmount { get; set; }
+
+        public List<AssetDepreciationYearPlan> AssetDepreciationYearPlans { get; set; }
+    }
+
+    public class AssetDepreciationYearPlan
+    {
+        public AssetDepreciationYearPlan()
+        {
+            AssetDepreciationMonthPlans = new List<AssetDepreciationMonthPlan>();
+        }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalYearCharge { get; set; }
+        public int Year { get; set; }
+
+        public List<AssetDepreciationMonthPlan> AssetDepreciationMonthPlans { get; set; }
+    }
+
+    public class AssetDepreciationMonthPlan
+    {
+        public int No { get; set; }
+        [Display(Name = "miesiąc/rok")]
+        public string MonthYear { get; set; }
+        [Display(Name = "Kwota odpisów")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal CurrentCharge { get; set; }
+        [Display(Name = "Odpisy narastająco")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal CumulativelyCharge { get; set; }
+        [Display(Name = "Kwota pozostała do zamortyzowania")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal RemainingAmount { get; set; }
+    }
+
+
 }

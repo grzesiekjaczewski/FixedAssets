@@ -26,80 +26,64 @@
 
     @foreach (var item in Model.DepreciationPlans)
     {
-        <tr>
-            <td style="width: 25%;">
-                @Html.DisplayFor(modelItem => item.MonthYear)
-            </td>
-            <td align="right" style="padding-right: 15px; width: 25%;">
-                @Html.DisplayFor(modelItem => item.CurrentCharge)
-            </td>
-            <td align="right" style="padding-right: 15px; width: 25%;">
-                @Html.DisplayFor(modelItem => item.CumulativelyCharge)
-            </td>
-            <td align="right" style="padding-right: 15px; width: 25%;">
-                @Html.DisplayFor(modelItem => item.RemainingAmount)
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <table class="table">
-                    @foreach (var item1 in item.Depreciacions)
-                    {
-                        <tr>
-                            <td style="width: 25%;">
-                                @Html.DisplayFor(modelItem => item1.AssetName)
-                            </td>
-                            <td align="right" style="padding-right: 15px; width: 25%;">
-                                @Html.DisplayFor(modelItem => item1.CurrentCharge)
-                            </td>
-                            <td align="right" style="padding-right: 15px; width: 25%;">
-                                @Html.DisplayFor(modelItem => item1.CumulativelyCharge)
-                            </td>
-                            <td align="right" style="padding-right: 15px; width: 25%;">
-                                @Html.DisplayFor(modelItem => item1.RemainingAmount)
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </td>
-        </tr>
+        if (item.CurrentCharge != 0)
+        {
+            <tr>
+                <td style="width: 25%;">
+                    @Html.DisplayFor(modelItem => item.MonthYear)
+                </td>
+                <td align="right" style="padding-right: 15px; width: 25%;">
+                    @Html.DisplayFor(modelItem => item.CurrentCharge)
+                </td>
+                <td align="right" style="padding-right: 15px; width: 25%;">
+                    @Html.DisplayFor(modelItem => item.CumulativelyCharge)
+                </td>
+                <td align="right" style="padding-right: 15px; width: 25%;">
+                    @Html.DisplayFor(modelItem => item.RemainingAmount)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <table class="table">
+                        @foreach (var item1 in item.Depreciacions)
+                        {
+                            <tr>
+                                <td style="width: 25%;">
+                                    @Html.DisplayFor(modelItem => item1.AssetName)
+                                </td>
+                                <td align="right" style="padding-right: 15px; width: 25%;">
+                                    @Html.DisplayFor(modelItem => item1.CurrentCharge)
+                                </td>
+                                <td align="right" style="padding-right: 15px; width: 25%;">
+                                    @Html.DisplayFor(modelItem => item1.CumulativelyCharge)
+                                </td>
+                                <td align="right" style="padding-right: 15px; width: 25%;">
+                                    @Html.DisplayFor(modelItem => item1.RemainingAmount)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
     }
 </table>
 
-
-
-
-
 <table class="table">
     <tr>
-        <th>
+        <td  style="width: 25%;">
             @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th style="text-align: right;">
-
-        </th>
-        <th style="text-align: right;">
-
-        </th>
-        <th style="text-align: right;">
-
-        </th>
-
-    </tr>
-
-    <tr>
-        <td></td>
-        <td align="right" style="padding-right: 15px;">
+        </td>
+        <td align="right" style="padding-right: 15px; width: 25%;">
             @Html.DisplayFor(model => model.TotalCurrentCharge)
         </td>
-        <td align="right" style="padding-right: 15px;">
+        <td align="right" style="padding-right: 15px; width: 25%;">
             @Html.DisplayFor(model => model.TotalCumulativelyCharge)
         </td>
-        <td align="right" style="padding-right: 15px;">
+        <td align="right" style="padding-right: 15px; width: 25%;">
             @Html.DisplayFor(model => model.TotalRemainingAmount)
         </td>
     </tr>
-
 </table>
 
 <div>
