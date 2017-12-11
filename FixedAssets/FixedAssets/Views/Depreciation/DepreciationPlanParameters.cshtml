@@ -4,7 +4,10 @@
     ViewBag.Title = "DepreciationPlanParameters";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p class="under-menu"><br /><p>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <h2>Parametry planu amortyzacji</h2>
 
 @using (Html.BeginForm())

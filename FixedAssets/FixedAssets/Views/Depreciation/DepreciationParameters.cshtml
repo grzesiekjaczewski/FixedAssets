@@ -3,7 +3,10 @@
     ViewBag.Title = "DepreciationParameters";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p class="under-menu"><br /><p>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <h2>Parametry naliczania amortyzacji zbiorczej</h2>
 <h4>Odpisy zostaną naliczone tylko dla śroków, które nie były amortyzowane za wskazany okres</h4>
 

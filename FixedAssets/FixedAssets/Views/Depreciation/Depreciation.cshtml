@@ -3,6 +3,9 @@
     ViewBag.Title = "Depreciation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Depreciation</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+<h2>Amortyzacja naliczona pomyślnie</h2>
 

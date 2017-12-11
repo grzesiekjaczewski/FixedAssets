@@ -24,9 +24,12 @@
                     {
                         <span class="icon-bar"></span>
                     }
-                    @if (Request.IsAuthenticated && User.IsInRole("Supervisor"))
+                    @if (Request.IsAuthenticated && (User.IsInRole("Supervisor") || User.IsInRole("Employee")))
                     {
                         <span class="icon-bar"></span>
+                    }
+                    @if (Request.IsAuthenticated && User.IsInRole("Supervisor"))
+                    { 
                         <span class="icon-bar"></span>
                     }
                     <span class="icon-bar"></span>

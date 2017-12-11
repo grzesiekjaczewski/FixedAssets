@@ -4,7 +4,10 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <h2>Usuwanie środka trwałego</h2>
 
 <h3>Czy na pewno usunąc wskazany środek trwały?</h3>

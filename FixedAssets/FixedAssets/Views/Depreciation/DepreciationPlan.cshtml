@@ -4,7 +4,10 @@
     ViewBag.Title = "DepreciationPlan";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<p class="under-menu"><br /><p>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <h2>Plan amortyzacji zbiorczej</h2>
 
 <table class="table" style="max-width:500px;">

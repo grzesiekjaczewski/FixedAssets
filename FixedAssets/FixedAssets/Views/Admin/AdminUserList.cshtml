@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "AdminUserList";
 }
-
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <h2>Lista użytkowników</h2>
 <table class="table">
     <tr>
