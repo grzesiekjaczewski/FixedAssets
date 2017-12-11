@@ -98,7 +98,8 @@ namespace UnitTestForFixesAssets
             Dictionary<int, DepreciationType> depreciationTypes = new Dictionary<int, DepreciationType>();
             depreciationTypes.Add(1, new DepreciationType() { Id = 1, Name = "Liniowa 30%", DepreciationRate = (decimal)30 });
 
-            depretiation.CalculatePlanForAssets(depretiationPlanList, assetList, depreciationTypes);
+            Dictionary<string, DepreciationCharge> depreciationCharges = new Dictionary<string, DepreciationCharge>();
+            depretiation.CalculatePlanForAssets(depretiationPlanList, assetList, depreciationTypes, depreciationCharges);
 
             decimal total = 0;
             foreach(DepretiationPlan dep in depretiationPlanList.DepretiationPlans)

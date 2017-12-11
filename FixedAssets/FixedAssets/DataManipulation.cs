@@ -40,6 +40,12 @@ namespace FixedAssets
             return db.T_DepreciationTypes.Select(dt => new { dt.Id, dt }).ToDictionary(dt => dt.Id, dt => dt.dt);
         }
 
+        static public Dictionary<string, DepreciationCharge> GetDepreciationCharges(ApplicationDbContext db)
+        {
+            return db.T_DepreciationCharges.Select(dc => new { dc.Year, dc.Month, dc.Asset_Id, dc })
+                .ToDictionary(dc => dc.Year.ToString() + dc.Month.ToString("00")+dc.Asset_Id.ToString(), dc => dc.dc);
+        }
+
 
         static public bool CanProcessDepretiatin(DateTime prevDate, DateTime nextDate)
         {

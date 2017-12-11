@@ -83,8 +83,11 @@ namespace FixedAssets.Logic
         public int Month { get; set; }
         public int Year { get; set; }
         public string MonthYear { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal CurrentCharge { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal CumulativelyCharge { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal RemainingAmount { get; set; }
     }
 
@@ -93,6 +96,7 @@ namespace FixedAssets.Logic
         public DepretiationPlanList()
         {
             DepretiationPlans = new List<DepretiationPlan>();
+            TotalCurrentCharge = 0;
         }
 
         public int StartMonth { get; set; }
@@ -101,5 +105,19 @@ namespace FixedAssets.Logic
         public int EndYear { get; set; }
 
         public List<DepretiationPlan> DepretiationPlans { get; set; }
+
+        [Display(Name = "Okres amortyzacji")]
+        public string MonthYear { get; set; }
+        [Display(Name = "Watrość amortyzacji")]
+        public decimal CurrentCharge { get; set; }
+
+        [Display(Name = "Podsumowanie")]
+        public string Total { get; set; }
+        [Display(Name = "Watrość amortyzacji")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalCurrentCharge { get; set; }
+
+        //public decimal CumulativelyCharge { get; set; }
+        //public decimal RemainingAmount { get; set; }
     }
 }

@@ -66,29 +66,46 @@ namespace FixedAssets.Controllers
             Dictionary<int, string> monthNames = DataManipulation.GetMonthNames(db);
             Dictionary<int, DepreciationType> depreciationTypes = DataManipulation.GetDepreciationTypes(db);
             List<Asset> assetList = DataManipulation.GetAssetList(db);
+            Dictionary<string, DepreciationCharge> DepreciationCharges = DataManipulation.GetDepreciationCharges(db);
             DepretiationPlanList depretiationPlanList = depretiation.CalculatePlan(startMonth, startYear, endMonth, endYear, monthNames);
-            depretiation.CalculatePlanForAssets(depretiationPlanList, assetList, depreciationTypes);
+            depretiation.CalculatePlanForAssets(depretiationPlanList, assetList, depreciationTypes, DepreciationCharges);
 
             return View(depretiationPlanList);
         }
       
-        //public ActionResult DepreciationPlan()
-        //{
-        //    Depretiation depretiation = new Depretiation();
-        //    DepretiationPlanList depretiationPlanList = depretiation.CalculatePlan(db);
-        //    return View(depretiationPlanList);
-        //}
-
-
-
         public ActionResult DepreciationParameters()
         {
-            return View();
+            PrepareYearMonths prepareYearMonths = new PrepareYearMonths();
+            YearMonths yearMonths = prepareYearMonths.GetYearMonths();
+            yearMonths.EndYear = DateTime.Now.Year + 1;
+
+            return View(yearMonths);
         }
 
-        public ActionResult Depreciation()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DepreciationParameters([Bind(Include = "StartMonth, StartYear, EndMonth, EndYear")] YearMonths yearMonths)
         {
-            return View();
+            return RedirectToAction("Depreciation", new
+            {
+                startMonth = yearMonths.StartMonth,
+                startYear = yearMonths.StartYear,
+                endMonth = yearMonths.EndMonth,
+                endYear = yearMonths.EndYear
+            });
+        }
+
+        public ActionResult Depreciation(int startMonth, int startYear, int endMonth, int endYear)
+        {
+            Depretiation depretiation = new Depretiation();
+            Dictionary<int, string> monthNames = DataManipulation.GetMonthNames(db);
+            Dictionary<int, DepreciationType> depreciationTypes = DataManipulation.GetDepreciationTypes(db);
+            List<Asset> assetList = DataManipulation.GetAssetList(db);
+            Dictionary<string, DepreciationCharge> DepreciationCharges = DataManipulation.GetDepreciationCharges(db);
+            DepretiationPlanList depretiationPlanList = depretiation.CalculatePlan(startMonth, startYear, endMonth, endYear, monthNames);
+            depretiation.CalculateDepretiationForAssets(depretiationPlanList, assetList, depreciationTypes, DepreciationCharges);
+
+            return View(depretiationPlanList);
         }
 
         public ActionResult DepreciationViewParameters()

@@ -77,6 +77,7 @@ namespace FixedAssets.Models
         public decimal CurrentCharge { get; set; }
         public decimal CumulativelyCharge { get; set; }
         public decimal RemainingAmount { get; set; }
+        public int Asset_Id { get; set; }
     }
 
     public class ChangeInValue
