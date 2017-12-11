@@ -93,11 +93,6 @@
         {
             <tr>
                 <td colspan="5">
-                    <b>Rok @Html.DisplayFor(modelItem => item.Year) - łączny odpis: @Html.DisplayFor(modelItem => item.TotalYearCharge) zł</b>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5">
                     <table class="table">
                         @foreach (var item1 in item.AssetDepreciationMonthPlans)
                         {
@@ -120,6 +115,11 @@
                             </tr>
                         }
                     </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <b>Rok @Html.DisplayFor(modelItem => item.Year) - łączny odpis: @Html.DisplayFor(modelItem => item.TotalYearCharge) zł</b>
                 </td>
             </tr>
         }
