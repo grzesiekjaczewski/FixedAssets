@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FixedAssets.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -41,6 +42,42 @@ namespace FixedAssets.Logic
         public int EndYear { get; set; }
         public List<Month> EndMonths { get; set; }
         public List<Year> EndYears { get; set; }
+
+        public void SetForDepreciation()
+        {
+            if (StartMonth > 1)
+            {
+                StartMonth--;
+                EndMonth--;
+            }
+            else
+            {
+                StartMonth = 1;
+                EndMonth = 1;
+                StartYear--;
+                EndYear--;
+            }
+        }
+
+        public void SetForDepreciationView()
+        {
+            StartMonth = 1;
+
+            //if (StartMonth > 1)
+            //{
+            //    StartMonth--;
+            //    EndMonth--;
+            //    StartYear--;
+            //}
+            //else
+            //{
+            //    StartMonth = 1;
+            //    EndMonth = 1;
+            //    StartYear-=2;
+            //    EndYear--;
+            //}
+        }
+
     }
 
     public class PrepareYearMonths
@@ -70,13 +107,15 @@ namespace FixedAssets.Logic
         }
     }
 
-    public class DepretiationPlan
+    public class DepreciationPlan
     {
-        public DepretiationPlan()
+        public DepreciationPlan()
         {
             CurrentCharge = 0;
             CumulativelyCharge = 0;
             RemainingAmount = 0;
+
+            Depreciacions = new List<DepreciationItem>();
         }
 
         public int No { get; set; }
@@ -89,13 +128,15 @@ namespace FixedAssets.Logic
         public decimal CumulativelyCharge { get; set; }
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal RemainingAmount { get; set; }
+
+        public List<DepreciationItem> Depreciacions { get; set; }
     }
 
-    public class DepretiationPlanList
+    public class DepreciationPlanList
     {
-        public DepretiationPlanList()
+        public DepreciationPlanList()
         {
-            DepretiationPlans = new List<DepretiationPlan>();
+            DepreciationPlans = new List<DepreciationPlan>();
             TotalCurrentCharge = 0;
         }
 
@@ -104,7 +145,7 @@ namespace FixedAssets.Logic
         public int EndMonth { get; set; }
         public int EndYear { get; set; }
 
-        public List<DepretiationPlan> DepretiationPlans { get; set; }
+        public List<DepreciationPlan> DepreciationPlans { get; set; }
 
         [Display(Name = "Okres amortyzacji")]
         public string MonthYear { get; set; }
@@ -116,8 +157,23 @@ namespace FixedAssets.Logic
         [Display(Name = "Watrość amortyzacji")]
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal TotalCurrentCharge { get; set; }
+        [Display(Name = "Amortyzacja narastająco")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalCumulativelyCharge { get; set; }
+        [Display(Name = "Pozostało do umorzenia")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal TotalRemainingAmount { get; set; }
+    }
 
-        //public decimal CumulativelyCharge { get; set; }
-        //public decimal RemainingAmount { get; set; }
+    public class DepreciationItem
+    {
+        [Display(Name = "Środek trwały")]
+        public string AssetName { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal CurrentCharge { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal CumulativelyCharge { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal RemainingAmount { get; set; }
     }
 }

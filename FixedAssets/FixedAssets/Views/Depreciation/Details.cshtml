@@ -4,7 +4,11 @@
     ViewBag.Title = "Amortyzacja środka trwałego";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+<h2>Szczegóły amortyzacji środka</h2>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -56,6 +60,14 @@
             @Html.DisplayFor(model => model.AmortisedValue)
         </dd>
 
+        <dt align="right">
+            @Html.DisplayNameFor(model => model.RemainingAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RemainingAmount)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Depreciated)
         </dt>
@@ -102,9 +114,9 @@
         <dt>
             @Html.ActionLink("Plan amortyzacji środka", "#")
         </dt>
-        <dt>
+        @*<dt>
             @Html.ActionLink("Naliczanie amortyzacji środka", "#")
-        </dt>
+        </dt>*@
         <dt>
             @Html.ActionLink("Pdgląd amortyzacji", "#")
         </dt>
@@ -113,7 +125,7 @@
 </div>
 <div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @Html.ActionLink("Powrót do listy", "Index")
     </p>
 </div>

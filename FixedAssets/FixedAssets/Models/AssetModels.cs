@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,6 +39,10 @@ namespace FixedAssets.Models
         public int DepreciationTypeId { get; set; }
         public int AssetTypeId { get; set; }
         public int AssetLocationId { get; set; }
+        [NotMapped]
+        [Display(Name = "Pozostało")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal RemainingAmount { get; set; }
     }
 
     public class AssetType : IDbDictionary

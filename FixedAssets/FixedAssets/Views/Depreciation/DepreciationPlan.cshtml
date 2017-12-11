@@ -1,4 +1,4 @@
-﻿@model FixedAssets.Logic.DepretiationPlanList
+﻿@model FixedAssets.Logic.DepreciationPlanList
 
 @{
     ViewBag.Title = "DepreciationPlan";
@@ -20,7 +20,7 @@
         </th>
     </tr>
 
-    @foreach (var item in Model.DepretiationPlans)
+    @foreach (var item in Model.DepreciationPlans)
     {
         <tr>
             <td>
@@ -30,9 +30,29 @@
                 @Html.DisplayFor(modelItem => item.CurrentCharge)
             </td>
         </tr>
-    }
-
+        <tr>
+            <td colspan="2">
+                <table class="table" style="max-width:500px;">
+                    @foreach (var item1 in item.Depreciacions)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item1.AssetName)
+                            </td>
+                            <td align="right" style="padding-right: 15px;">
+                                @Html.DisplayFor(modelItem => item1.CurrentCharge)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+     }
 </table>
+
+
+
+
 
 <table class="table" style="max-width:500px;">
     <tr>
