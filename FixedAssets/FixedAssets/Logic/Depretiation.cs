@@ -68,11 +68,11 @@ namespace FixedAssets.Logic
                                 DepreciationCharge depreciationCharge = new DepreciationCharge();
                                 depreciationCharge.Month = depretiationPlan.Month;
                                 depreciationCharge.Year = depretiationPlan.Year;
-                                depreciationCharge.Asset_Id = asset.Id;
+                                depreciationCharge.AssetId = asset.Id;
                                 depreciationCharge.CurrentCharge = depretiation;
                                 depreciationCharge.RemainingAmount = asset.AmortisedValue - asset.AmortisedValue;
                                 depreciationCharge.CumulativelyCharge = asset.AmortisedValue;
-                                depreciationCharge.No = db.T_DepreciationCharges.Where(dc => dc.Asset_Id == asset.Id).ToList().Count + 1;
+                                depreciationCharge.No = db.T_DepreciationCharges.Where(dc => dc.AssetId == asset.Id).ToList().Count + 1;
                                 db.T_DepreciationCharges.Add(depreciationCharge);
 
                                 Asset assetForModfy = db.T_Assets.Find(asset.Id);

@@ -272,6 +272,18 @@
     <Compile Include="Migrations\201712110015314_Powiązanie asset_id w depretiationCharges.Designer.cs">
       <DependentUpon>201712110015314_Powiązanie asset_id w depretiationCharges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712111019577_assetId for depretiationscharges.cs" />
+    <Compile Include="Migrations\201712111019577_assetId for depretiationscharges.Designer.cs">
+      <DependentUpon>201712111019577_assetId for depretiationscharges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111028042_i jeszcze raz assetid.cs" />
+    <Compile Include="Migrations\201712111028042_i jeszcze raz assetid.Designer.cs">
+      <DependentUpon>201712111028042_i jeszcze raz assetid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111030436_assetId az do skutku.cs" />
+    <Compile Include="Migrations\201712111030436_assetId az do skutku.Designer.cs">
+      <DependentUpon>201712111030436_assetId az do skutku.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
@@ -469,6 +481,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712110015314_Powiązanie asset_id w depretiationCharges.resx">
       <DependentUpon>201712110015314_Powiązanie asset_id w depretiationCharges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111019577_assetId for depretiationscharges.resx">
+      <DependentUpon>201712111019577_assetId for depretiationscharges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111028042_i jeszcze raz assetid.resx">
+      <DependentUpon>201712111028042_i jeszcze raz assetid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111030436_assetId az do skutku.resx">
+      <DependentUpon>201712111030436_assetId az do skutku.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
