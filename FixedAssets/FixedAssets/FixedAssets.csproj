@@ -290,6 +290,18 @@
     <Compile Include="Migrations\201712122128036_assetid for models changeinvalue and endoflifedisposal.Designer.cs">
       <DependentUpon>201712122128036_assetid for models changeinvalue and endoflifedisposal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712122151536_reasonforchangingid for reasonforchenging table.cs" />
+    <Compile Include="Migrations\201712122151536_reasonforchangingid for reasonforchenging table.Designer.cs">
+      <DependentUpon>201712122151536_reasonforchangingid for reasonforchenging table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712122158194_reasonforchanging one more time.cs" />
+    <Compile Include="Migrations\201712122158194_reasonforchanging one more time.Designer.cs">
+      <DependentUpon>201712122158194_reasonforchanging one more time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712122200373_reasonforchangingid one more time.cs" />
+    <Compile Include="Migrations\201712122200373_reasonforchangingid one more time.Designer.cs">
+      <DependentUpon>201712122200373_reasonforchangingid one more time.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminUserGroupViewModel.cs" />
@@ -500,6 +512,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712122128036_assetid for models changeinvalue and endoflifedisposal.resx">
       <DependentUpon>201712122128036_assetid for models changeinvalue and endoflifedisposal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712122151536_reasonforchangingid for reasonforchenging table.resx">
+      <DependentUpon>201712122151536_reasonforchangingid for reasonforchenging table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712122158194_reasonforchanging one more time.resx">
+      <DependentUpon>201712122158194_reasonforchanging one more time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712122200373_reasonforchangingid one more time.resx">
+      <DependentUpon>201712122200373_reasonforchangingid one more time.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

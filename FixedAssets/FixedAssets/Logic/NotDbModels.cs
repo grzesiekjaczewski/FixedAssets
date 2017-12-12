@@ -267,11 +267,22 @@ namespace FixedAssets.Logic
     {
         public int Id { get; set; }
         public int AssetId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DisposalDate { get; set; }
+
+        public string EndOfLifeReason { get; set; }
+        
+
     }
 
     public class ChangeInValueItem
     {
         public int Id { get; set; }
+        public int AssetId { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime ChangingDate { get; set; }
+
+        public int ReasonForChanging_Id { get; set; }
     }
 
 }

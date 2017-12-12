@@ -83,6 +83,7 @@ namespace FixedAssets.Models
         public decimal CumulativelyCharge { get; set; }
         public decimal RemainingAmount { get; set; }
         public int AssetId { get; set; }
+        public int ReasonForChangingId { get; set; }
     }
 
     public class ChangeInValue
@@ -93,6 +94,7 @@ namespace FixedAssets.Models
         public decimal ValueOfChange { get; set; }
         public decimal ValueAfterChange { get; set; }
         public int AssetId { get; set; }
+        public int ReasonForChangingId { get; set; }
     }
 
     public class ReasonForChanging
