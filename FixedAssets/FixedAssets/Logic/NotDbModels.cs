@@ -241,5 +241,26 @@ namespace FixedAssets.Logic
         public decimal RemainingAmount { get; set; }
     }
 
+    public class EquipmentElement
+    {
+        public EquipmentElement()
+        {
+        }
+
+        public int Id { get; set; }
+        [Display(Name = "Nazwa wyposarzenia")]
+        public string EquipmentName { get; set; }
+        [Display(Name = "Ilosć")]
+        public int Quantity { get; set; }
+        [Display(Name = "Wartość wg. zakupu")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal InitialValue { get; set; }
+        [Display(Name = "Wartość umorzenia")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal AmortisedValue { get; set; }
+        [Display(Name = "Pozostało do umorzenia")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal RemainingAmount { get; set; }
+    }
 
 }

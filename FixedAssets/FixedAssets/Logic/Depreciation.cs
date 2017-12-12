@@ -78,7 +78,7 @@ namespace FixedAssets.Logic
                 no = depreciationCharge.No;
             }
 
-            if (!plan) return assetDepreciationPlan;
+            if (!plan || assetDepreciationPlan.TotalCumulativelyCharge == asset.InitialValue) return assetDepreciationPlan;
 
 
             bool next = true;
@@ -150,13 +150,21 @@ namespace FixedAssets.Logic
             {
                 foreach (Asset asset in myDataSet.AssetList)
                 {
-                    if (DataManipulation.CanProcessDepretiatin(asset.StartUsingDate, new DateTime(depreciationPlan.Year, depreciationPlan.Month, 1)) 
-                        && asset.AmortisedValue < asset.InitialValue)
+                    if (DataManipulation.CanProcessDepretiatin(asset.StartUsingDate, new DateTime(depreciationPlan.Year, depreciationPlan.Month, 1)))
                     {
                         DepreciationType depreciationType = myDataSet.DepreciationTypes[asset.DepreciationTypeId];
-                        decimal depreciation = decimal.Round(asset.InitialValue * ((depreciationType.DepreciationRate / 100) / 12),2);
+                        AssetType assetType = myDataSet.AssetTypes.Where(at => at.Id == asset.AssetTypeId).FirstOrDefault();
+                        decimal depreciation = 0;
+                        if (assetType.LowValueAsset)
+                        {
+                            depreciation = asset.InitialValue;
+                        }
+                        else
+                        {
+                            depreciation = decimal.Round(asset.InitialValue * ((depreciationType.DepreciationRate / 100) / 12), 2);
+                        }
 
-                        if (!myDataSet.DepreciationCharges.ContainsKey(depreciationPlan.Year.ToString() + depreciationPlan.Month.ToString("00") + asset.Id.ToString()))
+                        if (!myDataSet.DepreciationCharges.ContainsKey(depreciationPlan.Year.ToString() + depreciationPlan.Month.ToString("00") + asset.Id.ToString()) && depreciation!=0)
                         {
                             if (asset.AmortisedValue + depreciation > asset.InitialValue)
                             {
@@ -164,7 +172,7 @@ namespace FixedAssets.Logic
                             }
                             asset.AmortisedValue += depreciation;
                             //Księgowanie umożenia
-                            if (posting)
+                            if (posting && asset.AmortisedValue <= asset.InitialValue && asset.IsUsed && !asset.Depreciated && depreciation != 0)
                             {
                                 DepreciationCharge depreciationCharge = new DepreciationCharge();
                                 depreciationCharge.Month = depreciationPlan.Month;
@@ -189,7 +197,10 @@ namespace FixedAssets.Logic
                         DepreciationItem depr = new DepreciationItem();
                         depr.AssetName = asset.AssetName;
                         depr.CurrentCharge = depreciation;
-                        depreciationPlan.Depreciacions.Add(depr);
+                        if (depreciation != 0)
+                        {
+                            depreciationPlan.Depreciacions.Add(depr);
+                        }
                         depreciationPlan.CurrentCharge += depreciation;
                         depreciationPlanList.TotalCurrentCharge += depreciation;
                     }

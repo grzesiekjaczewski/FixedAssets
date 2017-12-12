@@ -198,6 +198,7 @@
     <Compile Include="Controllers\DepreciationController.cs" />
     <Compile Include="Controllers\DepreciationTypesController.cs" />
     <Compile Include="Controllers\EndOfLifeDisposalsController.cs" />
+    <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReasonForChangingsController.cs" />
@@ -207,6 +208,7 @@
     </Compile>
     <Compile Include="Logic\CalculateDate.cs" />
     <Compile Include="Logic\Depreciation.cs" />
+    <Compile Include="Logic\Equipment.cs" />
     <Compile Include="Logic\NotDbModels.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.cs" />
     <Compile Include="Migrations\201711192016239_InitialCreate.Designer.cs">
@@ -411,6 +413,8 @@
     <Content Include="Views\Depreciation\DepreciationView.cshtml" />
     <Content Include="Views\Depreciation\AssetDepreciationView.cshtml" />
     <Content Include="Views\Depreciation\AssetDepreciationPlan.cshtml" />
+    <Content Include="Views\Equipment\Index.cshtml" />
+    <Content Include="Views\Equipment\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

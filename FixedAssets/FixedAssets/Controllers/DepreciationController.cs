@@ -201,12 +201,14 @@ namespace FixedAssets.Controllers
             DepreciationTypes = DataManipulation.GetDepreciationTypes(db);
             AssetList = DataManipulation.GetAssetList(db);
             DepreciationCharges = DataManipulation.GetDepreciationCharges(db);
+            AssetTypes = DataManipulation.GetAssetTypes(db);
         }
 
         public Dictionary<int, string> MonthNames;
         public Dictionary<int, DepreciationType> DepreciationTypes;
         public List<Asset> AssetList;
         public Dictionary<string, DepreciationCharge> DepreciationCharges;
+        public List<AssetType> AssetTypes;
     }
 
 }

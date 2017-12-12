@@ -21,7 +21,7 @@ namespace FixedAssets.Controllers
         // GET: Assets
         public ActionResult Index()
         {
-            return View(db.T_Assets.ToList());
+            return View(db.T_Assets.OrderBy(a => a.AssetName).ToList());
         }
 
         // GET: Assets/Details/5
@@ -134,23 +134,6 @@ namespace FixedAssets.Controllers
             return RedirectToAction("Index");
         }
 
-        //private void prepareViewBagDictionaryDescriptions(int assetLocationId, int assetTypeId, int depreciationTypeId)
-        //{
-        //    AssetLocation assetLocation = db.T_AssetLocations.Find(assetLocationId);
-        //    AssetType assetType = db.T_AssetTypes.Find(assetTypeId);
-        //    DepreciationType depreciationType = db.T_DepreciationTypes.Find(depreciationTypeId);
-
-        //    ViewBag.AssetLocation = assetLocation.Name;
-        //    ViewBag.AssetType = assetType.Name;
-        //    ViewBag.DepreciationType = depreciationType.Name;
-        //}
-
-        //private void prepareViewBagDictionaryForEdit()
-        //{
-        //    ViewBag.AssetLocations = DataManipulation.GetAllItems(db.T_AssetLocations);
-        //    ViewBag.AssetTypes = DataManipulation.GetAllItems(db.T_AssetTypes);
-        //    ViewBag.DepreciationTypes = DataManipulation.GetAllItems(db.T_DepreciationTypes);
-        //}
 
         //private void PopulateLocationsDropDownList(object selectedLocation = null)
         //{

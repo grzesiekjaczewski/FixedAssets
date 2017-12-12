@@ -27,7 +27,12 @@ namespace FixedAssets
 
         static public List<Asset> GetAssetList(ApplicationDbContext db)
         {
-            return db.T_Assets.Where(a => a.Depreciated == false).ToList();
+            return db.T_Assets.ToList();
+        }
+
+        static public List<AssetType> GetAssetTypes(ApplicationDbContext db)
+        {
+            return db.T_AssetTypes.ToList();
         }
 
         static public DepreciationType GetDepreciationTypeForAsset(ApplicationDbContext db, int depreciationTypeId)

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using FixedAssets;
 using FixedAssets.Models;
 using FixedAssets.Controllers;
+using System.Linq;
 
 namespace UnitTestForFixesAssets
 {
@@ -90,20 +91,34 @@ namespace UnitTestForFixesAssets
 
             DepreciationPlanList depreciationPlanList = depreciation.CalculatePlan(startMonth, startYear, endMonth, endYear, monthNames);
 
+            List<AssetType> assetTypes = new List<AssetType>();
+
+            assetTypes.Add(new AssetType() { Id = 3, LowValueAsset = false, Name = "Zestaw komputerowy" });
+            assetTypes.Add(new AssetType() { Id = 4, LowValueAsset = false, Name = "Drukarka" });
+            assetTypes.Add(new AssetType() { Id = 5, LowValueAsset = false, Name = "Serwer" });
+            assetTypes.Add(new AssetType() { Id = 6, LowValueAsset = true, Name = "Biurko" });
+            assetTypes.Add(new AssetType() { Id = 7, LowValueAsset = true, Name = "Krzeslo" });
+            assetTypes.Add(new AssetType() { Id = 8, LowValueAsset = false, Name = "Projektor" });
+            assetTypes.Add(new AssetType() { Id = 9, LowValueAsset = false, Name = "UPS" });
+            assetTypes.Add(new AssetType() { Id = 10, LowValueAsset = false, Name = "Macierz dyskowa" });
+            assetTypes.Add(new AssetType() { Id = 11, LowValueAsset = false, Name = "Super biurko prezesowej" });
             List<Asset> assetList = new List<Asset>();
 
-            assetList.Add(new Asset() { Id = 2 , AssetName = "Serwer HP", StartUsingDate = new DateTime(2017,12,8), InitialValue = (decimal)1000.21, AmortisedValue = 0, DepreciationTypeId = 1 });
-            assetList.Add(new Asset() { Id = 3, AssetName = "Macierz dyskowa 50TB", StartUsingDate = new DateTime(2017, 12, 21), InitialValue = (decimal)25000, AmortisedValue = 0, DepreciationTypeId = 1 });
-            assetList.Add(new Asset() { Id = 6, AssetName = "Biurko prezesowej", StartUsingDate = new DateTime(2017, 12, 8), InitialValue = (decimal)10000.00, AmortisedValue = 0, DepreciationTypeId = 1 });
+            assetList.Add(new Asset() { Id = 2 , AssetName = "Serwer HP", StartUsingDate = new DateTime(2017,12,8), InitialValue = (decimal)1000.21, AmortisedValue = 0, DepreciationTypeId = 1, AssetTypeId = 5, IsUsed = true, Depreciated = false });
+            assetList.Add(new Asset() { Id = 3, AssetName = "Macierz dyskowa 50TB", StartUsingDate = new DateTime(2017, 12, 21), InitialValue = (decimal)25000, AmortisedValue = 0, DepreciationTypeId = 1, AssetTypeId = 10, IsUsed = true, Depreciated = false });
+            assetList.Add(new Asset() { Id = 6, AssetName = "Biurko prezesowej", StartUsingDate = new DateTime(2017, 12, 8), InitialValue = (decimal)10000.00, AmortisedValue = 0, DepreciationTypeId = 1, AssetTypeId = 11, IsUsed = true, Depreciated = false });
+            assetList.Add(new Asset() { Id = 9, AssetName = "Biurko pracownika", StartUsingDate = new DateTime(2017, 10, 15), InitialValue = (decimal)500.00, AmortisedValue = 0, DepreciationTypeId = 2, AssetTypeId = 6, IsUsed = true, Depreciated = false });
 
             Dictionary<int, DepreciationType> depreciationTypes = new Dictionary<int, DepreciationType>();
             depreciationTypes.Add(1, new DepreciationType() { Id = 1, Name = "Liniowa 30%", DepreciationRate = (decimal)30 });
+            depreciationTypes.Add(2, new DepreciationType() { Id = 2, Name = "Jednorazowa", DepreciationRate = (decimal)100 });
 
             Dictionary<string, DepreciationCharge> depreciationCharges = new Dictionary<string, DepreciationCharge>();
             MyDataSet myDataSet = new MyDataSet();
             myDataSet.AssetList = assetList;
             myDataSet.DepreciationTypes = depreciationTypes;
             myDataSet.DepreciationCharges = depreciationCharges;
+            myDataSet.AssetTypes = assetTypes;
 
             depreciation.CalculatePlanForAssets(depreciationPlanList, myDataSet, false);
 
@@ -113,7 +128,7 @@ namespace UnitTestForFixesAssets
                 total += dep.CurrentCharge;
             }
 
-            Assert.AreEqual(total, (decimal)(10000.00 + 25000.00 + 1000.21));
+            Assert.AreEqual(total, (decimal)(10000.00 + 25000.00 + 1000.21 + 500));
         }
 
         [TestMethod]
@@ -296,6 +311,46 @@ namespace UnitTestForFixesAssets
             Assert.AreEqual(total13, total33);
         }
 
+        [TestMethod]
+        public void TestEquipment()
+        {
+            List<Asset> assets = new List<Asset>();
+
+            assets.Add(new Asset() { Id = 2, AssetName = "Serwer HP", StartUsingDate = new DateTime(2017, 12, 8), InitialValue = (decimal)1000.21, AmortisedValue = 0, DepreciationTypeId = 1 , InventoryNo = "0001", AssetLocationId = 1, AssetTypeId = 5, IsUsed = true});
+            assets.Add(new Asset() { Id = 3, AssetName = "Macierz dyskowa 50TB", StartUsingDate = new DateTime(2017, 12, 21), InitialValue = (decimal)25000, AmortisedValue = (decimal)100.04, DepreciationTypeId = 1, InventoryNo = "0002", AssetLocationId = 1, AssetTypeId = 10, IsUsed = true });
+            assets.Add(new Asset() { Id = 6, AssetName = "Biurko prezesowej", StartUsingDate = new DateTime(2017, 12, 8), InitialValue = (decimal)10000.00, AmortisedValue = (decimal)2500, DepreciationTypeId = 1, InventoryNo = "0003", AssetLocationId = 4, AssetTypeId = 11, IsUsed = true });
+            assets.Add(new Asset() { Id = 9, AssetName = "Biurko pracownika", StartUsingDate = new DateTime(2017, 10, 15), InitialValue = (decimal)500, AmortisedValue = 0, DepreciationTypeId = 2, InventoryNo = "B001", AssetLocationId = 2, AssetTypeId = 6, IsUsed = true });
+            assets.Add(new Asset() { Id = 10, AssetName = "Biurko pracownika", StartUsingDate = new DateTime(2017, 10, 15), InitialValue = (decimal)500, AmortisedValue = 0, DepreciationTypeId = 2, InventoryNo = "B002", AssetLocationId = 2, AssetTypeId = 6, IsUsed = true });
+            assets.Add(new Asset() { Id = 11, AssetName = "Biurko pracownika", StartUsingDate = new DateTime(2017, 10, 15), InitialValue = (decimal)500, AmortisedValue = 0, DepreciationTypeId = 2, InventoryNo = "B003", AssetLocationId = 5, AssetTypeId = 6, IsUsed = true });
+            assets.Add(new Asset() { Id = 12, AssetName = "Biurko pracownika", StartUsingDate = new DateTime(2017, 10, 15), InitialValue = (decimal)500, AmortisedValue = 0, DepreciationTypeId = 2, InventoryNo = "B004", AssetLocationId = 5, AssetTypeId = 6, IsUsed = true });
+            assets.Add(new Asset() { Id = 13, AssetName = "Lapto handlowca mobilnego", StartUsingDate = new DateTime(2017, 12, 12), InitialValue = (decimal)3500, AmortisedValue = 0, DepreciationTypeId = 1, InventoryNo = "L001", AssetLocationId = 5, AssetTypeId = 3, IsUsed = true });
+            assets.Add(new Asset() { Id = 14, AssetName = "Komputer desctop", StartUsingDate = new DateTime(2017, 10, 1), InitialValue = (decimal)3100, AmortisedValue = 0, DepreciationTypeId = 1, InventoryNo = "L002", AssetLocationId = 5, AssetTypeId = 3, IsUsed = true });
+
+
+
+            List<AssetType> assetTypes = new List<AssetType>();
+
+            assetTypes.Add(new AssetType() { Id = 3, LowValueAsset = false, Name = "Zestaw komputerowy" });
+            assetTypes.Add(new AssetType() { Id = 4, LowValueAsset = false, Name = "Drukarka" });
+            assetTypes.Add(new AssetType() { Id = 5, LowValueAsset = false, Name = "Serwer" });
+            assetTypes.Add(new AssetType() { Id = 6, LowValueAsset = true, Name = "Biurko" });
+            assetTypes.Add(new AssetType() { Id = 7, LowValueAsset = true, Name = "Krzeslo" });
+            assetTypes.Add(new AssetType() { Id = 8, LowValueAsset = false, Name = "Projektor" });
+            assetTypes.Add(new AssetType() { Id = 9, LowValueAsset = false, Name = "UPS" });
+            assetTypes.Add(new AssetType() { Id = 10, LowValueAsset = false, Name = "Macierz dyskowa" });
+            assetTypes.Add(new AssetType() { Id = 11, LowValueAsset = false, Name = "Super biurko prezesowej" });
+
+            Equipment equipment = new Equipment();
+            List<EquipmentElement> equipmentElements = equipment.PrepareEquipment(assets, assetTypes);
+
+            int t1 = equipmentElements.Sum(e => e.Quantity);
+            decimal t2 = equipmentElements.Sum(e => e.InitialValue);
+            decimal t3 = equipmentElements.Sum(e => e.AmortisedValue);
+
+            Assert.AreEqual(t1, 9);
+            Assert.AreEqual(t2, (decimal)44600.21);
+            Assert.AreEqual(t3, (decimal)2600.04);
+        }
 
     }
 }
