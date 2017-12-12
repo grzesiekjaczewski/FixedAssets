@@ -1,8 +1,12 @@
-﻿
+﻿@model FixedAssets.Logic.EndOfLifeDosposalItem
 @{
     ViewBag.Title = "EndOfLifeDisposal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 
-<h2>EndOfLifeDisposal</h2>
+<h2>Dyspozycja utylizacji środka trwałego</h2>
 

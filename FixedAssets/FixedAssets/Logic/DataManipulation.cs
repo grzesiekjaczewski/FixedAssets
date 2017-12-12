@@ -20,6 +20,17 @@ namespace FixedAssets
             return items;
         }
 
+        static public bool CannDeleteAsset(ApplicationDbContext db, int? assetId)
+        {
+            if (assetId == null) assetId = 0;
+            bool test = true;
+            if (db.T_DepreciationCharges.Where(dc => dc.AssetId == assetId).Count() > 0)
+            {
+                test = false;
+            }
+            return test;
+        }
+
         static public Dictionary<int, string> GetMonthNames(ApplicationDbContext db)
         {
             return db.T_MonthNames.Select(m => new { m.No, m.Name }).ToDictionary(m => m.No, m => m.Name);

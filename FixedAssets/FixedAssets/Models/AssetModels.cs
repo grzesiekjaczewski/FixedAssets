@@ -92,6 +92,7 @@ namespace FixedAssets.Models
         public DateTime ChangingDate { get; set; }
         public decimal ValueOfChange { get; set; }
         public decimal ValueAfterChange { get; set; }
+        public int AssetId { get; set; }
     }
 
     public class ReasonForChanging
@@ -113,6 +114,7 @@ namespace FixedAssets.Models
         public string CreatedBy { get; set; }
         public string DisposalCompany { get; set; }
         public string DisposedOfBy { get; set; }
+        public int AssetId { get; set; }
     }
 
     public class MonthName

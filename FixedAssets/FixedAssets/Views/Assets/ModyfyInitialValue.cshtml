@@ -1,8 +1,11 @@
-﻿
+﻿@model FixedAssets.Logic.ChangeInValueItem
 @{
     ViewBag.Title = "ModyfyInitialValue";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ModyfyInitialValue</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+<h2>Zmiana wartości środka trwałego</h2>
 

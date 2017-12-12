@@ -120,7 +120,7 @@ namespace FixedAssets.Controllers
                 return HttpNotFound();
             }
 
-            if (asset.AmortisedValue != 0)
+            if (!DataManipulation.CannDeleteAsset(db, id))
             {
                 return RedirectToAction("CanNotDelete");
             }

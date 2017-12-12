@@ -263,4 +263,15 @@ namespace FixedAssets.Logic
         public decimal RemainingAmount { get; set; }
     }
 
+    public class EndOfLifeDosposalItem
+    {
+        public int Id { get; set; }
+        public int AssetId { get; set; }
+    }
+
+    public class ChangeInValueItem
+    {
+        public int Id { get; set; }
+    }
+
 }
