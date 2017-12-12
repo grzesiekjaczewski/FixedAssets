@@ -56,7 +56,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.InitialValue, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.InitialValue, "", new { @class = "text-danger" })
-                @Html.ActionLink("Zmień wartość początkową", "#");
+                @Html.ActionLink("Zmień wartość początkową", "ModyfyInitialValue", new { @Model.Id });
             </div>
         </div>
 
@@ -103,14 +103,14 @@
     <div>
         <dl colspan = "2">
             <dt>
-                @Html.ActionLink("Utylizacja środka", "#")
+                @Html.ActionLink("Utylizacja środka", "EndOfLifeDisposal", new { @Model.Id })
             </dt>
         </dl>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Powrót do listy", "Index")
 </div>
 
 @section Scripts {

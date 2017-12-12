@@ -119,6 +119,12 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (asset.AmortisedValue != 0)
+            {
+                return RedirectToAction("CanNotDelete");
+            }
+
             _controllerVieBagHelper.PrepareViewBagAssetDictionaryDescriptions(this, db, asset);
             return View(asset);
         }
@@ -134,14 +140,43 @@ namespace FixedAssets.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult CanNotDelete()
+        {
+            return View();
+        }
 
-        //private void PopulateLocationsDropDownList(object selectedLocation = null)
-        //{
-        //    var locationQuery = from d in db.T_AssetLocations
-        //                        orderby d.Name
-        //                        select d;
-        //    ViewBag.LocationId = new SelectList(locationQuery, "Id", "LocationName", selectedLocation);
-        //}
+
+        // GET: Assets/Details/5
+        public ActionResult EndOfLifeDisposal(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Asset asset = db.T_Assets.Find(id);
+            if (asset == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(asset);
+        }
+
+        // GET: Assets/Details/5
+        public ActionResult ModyfyInitialValue(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Asset asset = db.T_Assets.Find(id);
+            if (asset == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(asset);
+        }
 
         protected override void Dispose(bool disposing)
         {

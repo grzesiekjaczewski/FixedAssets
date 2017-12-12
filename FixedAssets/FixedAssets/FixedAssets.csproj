@@ -202,7 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReasonForChangingsController.cs" />
-    <Compile Include="DataManipulation.cs" />
+    <Compile Include="Logic\DataManipulation.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -415,6 +415,9 @@
     <Content Include="Views\Depreciation\AssetDepreciationPlan.cshtml" />
     <Content Include="Views\Equipment\Index.cshtml" />
     <Content Include="Views\Equipment\Details.cshtml" />
+    <Content Include="Views\Assets\EndOfLifeDisposal.cshtml" />
+    <Content Include="Views\Assets\ModyfyInitialValue.cshtml" />
+    <Content Include="Views\Assets\CanNotDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
