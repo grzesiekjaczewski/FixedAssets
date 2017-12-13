@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using FixedAssets.Models;
 using FixedAssets.Controllers.Components;
+using FixedAssets.Logic;
 
 namespace FixedAssets.Controllers
 {
@@ -158,8 +159,51 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
-            
-            return View(asset);
+
+            EndOfLifeDosposalItem endOfLifeDosposalItem = new EndOfLifeDosposalItem();
+
+            endOfLifeDosposalItem.AssetId = asset.Id;
+            endOfLifeDosposalItem.AssetName = asset.AssetName;
+            endOfLifeDosposalItem.DisposalDate = DateTime.Now;
+            endOfLifeDosposalItem.CreatedBy = User.Identity.Name;
+
+            return View(endOfLifeDosposalItem);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EndOfLifeDisposal([Bind(Include = "AssetId,DisposalDate,EndOfLifeReason,CreatedBy,DisposalCompany")] EndOfLifeDosposalItem endOfLifeDisposalItem)
+        {
+            Asset asset = db.T_Assets.Find(endOfLifeDisposalItem.AssetId);
+
+            EndOfLifeDisposal endOfLifeDisposal = new Models.EndOfLifeDisposal();
+
+            int no = 0;
+
+            endOfLifeDisposal.Year = DateTime.Now.Year;
+
+            if (db.T_EndOfLifeDisposals.Where(e => e.Year == endOfLifeDisposal.Year).Count() == 0)
+            {
+                no = 1;
+            }
+            else
+            {
+                no = db.T_EndOfLifeDisposals.Where(e => e.Year == endOfLifeDisposal.Year).Max(e => e.No);
+            }
+
+            endOfLifeDisposal.No = no;
+            endOfLifeDisposal.DisposalDate = endOfLifeDisposalItem.DisposalDate;
+            endOfLifeDisposal.EndOfLifeReason = endOfLifeDisposalItem.EndOfLifeReason;
+            endOfLifeDisposal.CreatedBy = endOfLifeDisposalItem.CreatedBy;
+            endOfLifeDisposal.DisposalCompany = endOfLifeDisposalItem.DisposalCompany;
+            endOfLifeDisposal.AssetId = endOfLifeDisposalItem.AssetId;
+
+            asset.IsUsed = false;
+
+            db.T_EndOfLifeDisposals.Add(endOfLifeDisposal);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "EndOfLifeDisposals");
         }
 
         // GET: Assets/Details/5
@@ -175,8 +219,37 @@ namespace FixedAssets.Controllers
                 return HttpNotFound();
             }
 
-            return View(asset);
+            ChangeInValueItem changeInValueItem = new ChangeInValueItem();
+
+            changeInValueItem.AssetId = asset.Id;
+            changeInValueItem.AssetName = asset.AssetName;
+            changeInValueItem.ChangingDate = DateTime.Now.AddDays(10);
+            changeInValueItem.ReasonForChangings = db.T_ReasonForChangings.ToList();
+            changeInValueItem.ValueAfterChange = asset.InitialValue;
+
+            return View(changeInValueItem);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ModyfyInitialValue([Bind(Include = "AssetId,ChangingDate,ValueOfChange,ValueAfterChange,ReasonForChangingId,AssetName,ChangingDate")] ChangeInValueItem changeInValueItem)
+        {
+            Asset asset = db.T_Assets.Find(changeInValueItem.AssetId);
+
+            ChangeInValue changeInValue = new ChangeInValue();
+            changeInValue.AssetId = changeInValueItem.AssetId;
+            changeInValue.ChangingDate = changeInValueItem.ChangingDate;
+            changeInValue.ReasonForChangingId = changeInValueItem.ReasonForChangingId;
+            changeInValue.ValueAfterChange = changeInValueItem.ValueAfterChange;
+            changeInValue.ValueOfChange = changeInValueItem.ValueAfterChange - asset.InitialValue;
+
+            asset.InitialValue = changeInValueItem.ValueAfterChange;
+            db.T_ChangeInValues.Add(changeInValue);
+            db.SaveChanges();
+
+            return RedirectToAction("Edit", new { id = changeInValueItem.AssetId });
+        }
+
 
         protected override void Dispose(bool disposing)
         {

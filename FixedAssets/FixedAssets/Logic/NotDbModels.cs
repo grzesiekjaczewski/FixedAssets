@@ -267,22 +267,42 @@ namespace FixedAssets.Logic
     {
         public int Id { get; set; }
         public int AssetId { get; set; }
+        [Display(Name = "Data dyspozycji")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DisposalDate { get; set; }
-
+        [Display(Name = "Numer tyspozycji")]
+        public int No { get; set; }
+        [Display(Name = "Rok")]
+        public int Year { get; set; }
+        [Display(Name = "Przyczna utylizacji")]
         public string EndOfLifeReason { get; set; }
-        
-
+        [Display(Name = "Utworzona przez")]
+        public string CreatedBy { get; set; }
+        [Display(Name = "Firma utylizująca")]
+        public string DisposalCompany { get; set; }
+        [Display(Name = "Środek trwały")]
+        public string AssetName { get; set; }
     }
 
     public class ChangeInValueItem
     {
         public int Id { get; set; }
         public int AssetId { get; set; }
+        [Display(Name = "Data zmiany")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ChangingDate { get; set; }
+        [Display(Name = "Wartość po zmianie")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal ValueOfChange { get; set; }
+        [Display(Name = "Wartość przed zmianą")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal ValueAfterChange { get; set; }
+        [Display(Name = "Przyczyna zmiany wartości")]
+        public int ReasonForChangingId { get; set; }
+        public List<ReasonForChanging> ReasonForChangings { get; set; }
+        [Display(Name = "Środek trwały")]
+        public string AssetName { get; set; }
 
-        public int ReasonForChanging_Id { get; set; }
     }
 
 }
