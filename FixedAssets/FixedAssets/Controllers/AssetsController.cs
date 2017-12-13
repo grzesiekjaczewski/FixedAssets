@@ -84,6 +84,7 @@ namespace FixedAssets.Controllers
                 return HttpNotFound();
             }
             _controllerVieBagHelper.PrepareViewBagDictionaryForEdit(this, db);
+            DataManipulation.GetEndOfLifeDisposal(this, db, id);
 
             return View(asset);
         }

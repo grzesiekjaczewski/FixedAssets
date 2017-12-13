@@ -109,11 +109,17 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Numer")]
         public int No { get; set; }
         public int Year { get; set; }
+        [Display(Name = "Data")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DisposalDate { get; set; }
+        [Display(Name = "Przyczyna utylizacji")]
         public string EndOfLifeReason { get; set; }
+        [Display(Name = "Utworzono przez")]
         public string CreatedBy { get; set; }
+        [Display(Name = "Podmiot wykonujący utylizację")]
         public string DisposalCompany { get; set; }
         public string DisposedOfBy { get; set; }
         public int AssetId { get; set; }

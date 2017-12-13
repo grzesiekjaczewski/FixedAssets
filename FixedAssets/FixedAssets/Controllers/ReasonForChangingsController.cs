@@ -103,6 +103,10 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+            if (!DataManipulation.CannDeleteReasonForChangings(db, id))
+            {
+                return RedirectToAction("CanNotDelete");
+            }
             return View(reasonForChanging);
         }
 
@@ -115,6 +119,11 @@ namespace FixedAssets.Controllers
             db.T_ReasonForChangings.Remove(reasonForChanging);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult CanNotDelete()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)

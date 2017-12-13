@@ -434,6 +434,10 @@
     <Content Include="Views\Assets\EndOfLifeDisposal.cshtml" />
     <Content Include="Views\Assets\ModyfyInitialValue.cshtml" />
     <Content Include="Views\Assets\CanNotDelete.cshtml" />
+    <Content Include="Views\AssetLocations\CanNotDelete.cshtml" />
+    <Content Include="Views\AssetTypes\CanNotDelete.cshtml" />
+    <Content Include="Views\DepreciationTypes\CanNotDelete.cshtml" />
+    <Content Include="Views\ReasonForChangings\CanNotDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

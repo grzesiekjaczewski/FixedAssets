@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "CanNotDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+<h2>Nie mozna usunąć już użytej przyczyn zmiany wartości.</h2>
+<div>
+    @Html.ActionLink("Powrót do listy", "Index")
+</div>
+

@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.No)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DisposalDate)
         </th>
         <th>
@@ -35,10 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.No)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
+            @item.No.ToString("000")/@item.Year.ToString()
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DisposalDate)

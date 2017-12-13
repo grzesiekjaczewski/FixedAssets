@@ -103,6 +103,10 @@ namespace FixedAssets.Controllers
             {
                 return HttpNotFound();
             }
+            if (!DataManipulation.CannDeleteAssetType(db, id))
+            {
+                return RedirectToAction("CanNotDelete");
+            }
             return View(assetType);
         }
 
@@ -116,6 +120,12 @@ namespace FixedAssets.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult CanNotDelete()
+        {
+            return View();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

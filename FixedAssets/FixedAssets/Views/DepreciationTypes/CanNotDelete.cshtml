@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "CanNotDelete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+<h2>Nie można usunąć stawki amortyzacji, wykozystanej w którymkolwiek środku trwałym.</h2>
+<div>
+    @Html.ActionLink("Powrót do listy", "Index")
+</div>
+
+

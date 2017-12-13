@@ -31,6 +31,68 @@ namespace FixedAssets
             return test;
         }
 
+        static public bool CannDeleteAssetLocation(ApplicationDbContext db, int? assetLocationId)
+        {
+            if (assetLocationId == null) assetLocationId = 0;
+            bool test = true;
+            if (db.T_Assets.Where(a => a.AssetLocationId == assetLocationId).Count() > 0)
+            {
+                test = false;
+            }
+            return test;
+        }
+
+        static public bool CannDeleteAssetType(ApplicationDbContext db, int? assetTypeId)
+        {
+            if (assetTypeId == null) assetTypeId = 0;
+            bool test = true;
+            if (db.T_Assets.Where(a => a.AssetTypeId == assetTypeId).Count() > 0)
+            {
+                test = false;
+            }
+            return test;
+        }
+
+        static public bool CannDeleteDepreciationType(ApplicationDbContext db, int? depreciationTypeId)
+        {
+            if (depreciationTypeId == null) depreciationTypeId = 0;
+            bool test = true;
+            if (db.T_Assets.Where(a => a.DepreciationTypeId == depreciationTypeId).Count() > 0)
+            {
+                test = false;
+            }
+            return test;
+        }
+
+        static public bool CannDeleteReasonForChangings(ApplicationDbContext db, int? reasonForChangingId)
+        {
+            if (reasonForChangingId == null) reasonForChangingId = 0;
+            bool test = true;
+            if (db.T_ChangeInValues.Where(a => a.ReasonForChangingId == reasonForChangingId).Count() > 0)
+            {
+                test = false;
+            }
+            return test;
+        }
+
+        static public void GetEndOfLifeDisposal(Controller controller, ApplicationDbContext db, int? assetId)
+        {
+            if (db.T_EndOfLifeDisposals.Where(e => e.AssetId == assetId).Count() == 0)
+            {
+                controller.ViewBag.EndOfLifeDisposal1 = "";
+                return;
+            }
+            EndOfLifeDisposal endOfLifeDisposal = db.T_EndOfLifeDisposals.Where(e => e.AssetId == assetId).FirstOrDefault();
+            controller.ViewBag.EndOfLifeDisposal1 = "Dyspozycja utylizacji:";
+            controller.ViewBag.EndOfLifeDisposal2 = endOfLifeDisposal.No.ToString("000") + "/" + endOfLifeDisposal.Year.ToString();
+            controller.ViewBag.EndOfLifeDisposal3 = endOfLifeDisposal.DisposalDate.ToString("dd.MM.yyyy");
+            controller.ViewBag.EndOfLifeDisposal4 = endOfLifeDisposal.EndOfLifeReason;
+            controller.ViewBag.EndOfLifeDisposal5 = endOfLifeDisposal.CreatedBy;
+            controller.ViewBag.EndOfLifeDisposal6 = endOfLifeDisposal.DisposalCompany;
+        }
+
+
+
         static public Dictionary<int, string> GetMonthNames(ApplicationDbContext db)
         {
             return db.T_MonthNames.Select(m => new { m.No, m.Name }).ToDictionary(m => m.No, m => m.Name);
