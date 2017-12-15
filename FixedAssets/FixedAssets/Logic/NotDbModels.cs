@@ -302,6 +302,7 @@ namespace FixedAssets.Logic
         public List<ReasonForChanging> ReasonForChangings { get; set; }
         [Display(Name = "Środek trwały")]
         public string AssetName { get; set; }
+        public string ReasonForChangingName { get; set; }
 
     }
 

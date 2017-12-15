@@ -1,4 +1,5 @@
-﻿using FixedAssets.Models;
+﻿using FixedAssets.Logic;
+using FixedAssets.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -29,6 +30,27 @@ namespace FixedAssets
                 test = false;
             }
             return test;
+        }
+
+        static public List<ChangeInValueItem> GetChangeInValueList(ApplicationDbContext db, int? assetId)
+        {
+            if (assetId == null) assetId = 0;
+            List<ChangeInValue> changeInValues = db.T_ChangeInValues.Where(c => c.AssetId == assetId).ToList();
+
+            List<ChangeInValueItem> changeInValueItems = new List<ChangeInValueItem>();
+
+            foreach(ChangeInValue changeInValue in changeInValues)
+            {
+                ChangeInValueItem changeInValueItem = new ChangeInValueItem();
+                changeInValueItem.ChangingDate = changeInValue.ChangingDate;
+                ReasonForChanging reasonForChanging = db.T_ReasonForChangings.Where(r => r.Id == changeInValue.ReasonForChangingId).FirstOrDefault();
+                changeInValueItem.ReasonForChangingName = reasonForChanging.Description;
+                changeInValueItem.ValueOfChange = changeInValue.ValueOfChange;
+                changeInValueItem.ValueAfterChange = changeInValue.ValueAfterChange;
+                changeInValueItems.Add(changeInValueItem);
+            }
+
+            return changeInValueItems;
         }
 
         static public bool CannDeleteAssetLocation(ApplicationDbContext db, int? assetLocationId)
