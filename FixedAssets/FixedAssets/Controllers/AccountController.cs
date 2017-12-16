@@ -78,7 +78,7 @@ namespace FixedAssets.Controllers
             var user = UserManager.FindByEmail(model.Email);
             if (user == null)
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("", "Błąd logowania. Wprowadzony adres e-mail lub hasło są niepoprawne.");
                 return View(model);
             }
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
@@ -92,7 +92,7 @@ namespace FixedAssets.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Błąd logowania. Wprowadzony adres e-mail lub hasło są niepoprawne.");
                     return View(model);
             }
         }
