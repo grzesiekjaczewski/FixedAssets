@@ -103,15 +103,91 @@
     </dl>
 </div>
 <div>
-    <dl colspan = "2">
-        <dt>
-            @Html.ActionLink("Zmiany wartości środka", "#")
-        </dt>
-        <dt>
-            @Html.ActionLink("Dokumenty dotyczące utylizacji", "#")
-        </dt>
-    </dl>
+    @if (@ViewBag.ChangeInValueList.Count > 0)
+    {
+        <table>
+            <tr>
+                <th>Zmiany wartości środka trwałego</th>
+            </tr>
+            @foreach (var item in ViewBag.ChangeInValueList)
+            {
+                <tr>
+                    <td>
+                        Przyczyna zmiany
+                    </td>
+                    <td>
+                        @item.ReasonForChangingName
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Data zmiany
+                    </td>
+                    <td>
+                        @item.ChangingDate.ToString("dd.MM.yyyy")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Wartość zmiany
+                    </td>
+                    <td>
+                        @item.ValueOfChange
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    @if (ViewBag.EndOfLifeDisposal1 != "")
+    {
+        <table>
+            <tr>
+                <th>Dyspozycja utylizacji środka trwałego</th>
+            </tr>
+            <tr>
+                <td>
+                    Numer dyspozycji
+                </td>
+                <td>
+                    @ViewBag.EndOfLifeDisposal2
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Data dyspozycji
+                </td>
+                <td>
+                    @ViewBag.EndOfLifeDisposal3
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Przyczyna utylizacji
+                </td>
+                <td>
+                    @ViewBag.EndOfLifeDisposal4
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Osoba wprowadzająca dyspozycję
+                </td>
+                <td>
+                    @ViewBag.EndOfLifeDisposal5
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Firma utylizująca
+                </td>
+                <td>
+                    @ViewBag.EndOfLifeDisposal6
+                </td>
+            </tr>
+        </table>
+    }
 </div>
+<br />
 <div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

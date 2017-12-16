@@ -106,32 +106,61 @@
         </div>
     </div>
     <div>
-        <dl colspan = "2">
-            <dt>
-                @if (ViewBag.EndOfLifeDisposal1 == "")
-                {
-                    @Html.ActionLink("Utylizacja środka", "EndOfLifeDisposal", new { @Model.Id })
-                }
-                else
-                {
-                    @ViewBag.EndOfLifeDisposal1
-                    <br />
-                    @ViewBag.EndOfLifeDisposal2
-                    <br />
-                    @ViewBag.EndOfLifeDisposal3
-                    <br />
-                    @ViewBag.EndOfLifeDisposal4
-                    <br />
-                    @ViewBag.EndOfLifeDisposal5
-                    <br />
-                    @ViewBag.EndOfLifeDisposal6
-                    <br />
-                }
-            </dt>
-        </dl>
+        @if (ViewBag.EndOfLifeDisposal1 == "")
+        {
+            @Html.ActionLink("Utylizacja środka", "EndOfLifeDisposal", new { @Model.Id })
+        }
+        else
+        {
+            <table>
+                <tr>
+                    <th>Dyspozycja utylizacji środka trwałego</th>
+                </tr>
+                <tr>
+                    <td>
+                        Numer dyspozycji
+                    </td>
+                    <td>
+                        @ViewBag.EndOfLifeDisposal2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Data dyspozycji
+                    </td>
+                    <td>
+                        @ViewBag.EndOfLifeDisposal3
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Przyczyna utylizacji
+                    </td>
+                    <td>
+                        @ViewBag.EndOfLifeDisposal4
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Osoba wprowadzająca dyspozycję
+                    </td>
+                    <td>
+                        @ViewBag.EndOfLifeDisposal5
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Firma utylizująca
+                    </td>
+                    <td>
+                        @ViewBag.EndOfLifeDisposal6
+                    </td>
+                </tr>
+            </table>
+        }
     </div>
 }
-
+<br />
 <div>
     @Html.ActionLink("Powrót do listy", "Index")
 </div>

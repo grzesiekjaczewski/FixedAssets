@@ -38,6 +38,8 @@ namespace FixedAssets.Controllers
                 return HttpNotFound();
             }
             _controllerVieBagHelper.PrepareViewBagAssetDictionaryDescriptions(this, db, asset);
+            ViewBag.ChangeInValueList = DataManipulation.GetChangeInValueList(db, id);
+            DataManipulation.GetEndOfLifeDisposal(this, db, id);
             return View(asset);
         }
 
@@ -250,6 +252,23 @@ namespace FixedAssets.Controllers
 
             return RedirectToAction("Edit", new { id = changeInValueItem.AssetId });
         }
+
+        //public ActionResult ChangeInValueList(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Asset asset = db.T_Assets.Find(id);
+        //    if (asset == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    List<ChangeInValue> changeInValues = DataManipulation.GetChangeInValueList(db, id);
+
+        //    return View(changeInValues);
+        //}
 
 
         protected override void Dispose(bool disposing)
