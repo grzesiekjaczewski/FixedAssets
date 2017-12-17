@@ -27,7 +27,7 @@ namespace FixedAssets
 
         private Task configSendGridasync(IdentityMessage message)
         {
-            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage("ostmaster@kjaczewska.pl", "grzesiek.jaczewski@gmail.com"))
+            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage("postmaster@kjaczewska.pl", message.Destination))
             {
                 mm.Subject = message.Subject;
                 mm.Body = message.Body;
