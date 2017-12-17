@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 using FixedAssets.Models;
 using SendGrid;
 using System.Net;
+using System.Configuration;
 
 namespace FixedAssets
 {
@@ -26,28 +27,33 @@ namespace FixedAssets
 
         private Task configSendGridasync(IdentityMessage message)
         {
-            var myMessage = new SendGridMessage();
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress(
-                          "grzesiek.jaczewski@gmail.com", "My name");
-            myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
-
-            var credentials = new NetworkCredential("grzesiek.jaczewski@gmail.com", "1hab38cdr");
-
-            // Create a Web transport for sending email.
-            var transportWeb = new Web(credentials);
-
-            // Send the email.
-            if (transportWeb != null)
+            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage("ostmaster@kjaczewska.pl", "grzesiek.jaczewski@gmail.com"))
             {
-                return transportWeb.DeliverAsync(myMessage);
+                mm.Subject = message.Subject;
+                mm.Body = message.Body;
+                mm.IsBodyHtml = true;
+
+                try
+                {
+                    using (System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient())
+                    {
+                        smtp.Host = "mail.kjaczewska.pl";
+                        NetworkCredential NetworkCred = new NetworkCredential("postmaster@kjaczewska.pl", "Ycj2yshvgf65+");
+                        smtp.UseDefaultCredentials = true;
+                        smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+                        smtp.Credentials = NetworkCred;
+                        smtp.Port = 587;
+                        smtp.EnableSsl = false;
+                        smtp.Send(mm);
+                    }
+                }
+                catch (Exception e)
+                {
+                    return Task.FromResult(0);
+                }
             }
-            else
-            {
-                return Task.FromResult(0);
-            }
+
+            return Task.CompletedTask;
         }
     }
 
@@ -112,6 +118,9 @@ namespace FixedAssets
                 manager.UserTokenProvider = 
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+
+            manager.EmailService = new EmailService();
+
             return manager;
         }
     }

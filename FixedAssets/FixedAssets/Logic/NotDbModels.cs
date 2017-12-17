@@ -291,12 +291,15 @@ namespace FixedAssets.Logic
         [Display(Name = "Data zmiany")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ChangingDate { get; set; }
-        [Display(Name = "Wartość po zmianie")]
+        [Display(Name = "Wartość zmiany")]
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal ValueOfChange { get; set; }
-        [Display(Name = "Wartość przed zmianą")]
+        [Display(Name = "Wartość po zmianie")]
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
         public decimal ValueAfterChange { get; set; }
+        [Display(Name = "Wartość przed zmianą")]
+        [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
+        public decimal ValueBeforeChange { get; set; }
         [Display(Name = "Przyczyna zmiany wartości")]
         public int ReasonForChangingId { get; set; }
         public List<ReasonForChanging> ReasonForChangings { get; set; }

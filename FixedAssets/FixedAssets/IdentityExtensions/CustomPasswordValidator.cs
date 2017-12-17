@@ -17,7 +17,7 @@ namespace FixedAssets.IdentityExtensions
                 return Task.FromResult(IdentityResult.Failed(String.Format("Hasło musi mieć przynajmniej {0} znaków.", RequiredLength)));
             }
 
-            string pattern = @"^(?=.*[0-9])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*0-9]{10,}$";
+            string pattern = @"^(?=.*[0-9])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*0-9]{6,}$";
 
             if (!Regex.IsMatch(item, pattern))
             {

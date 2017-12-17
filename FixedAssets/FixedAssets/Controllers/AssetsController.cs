@@ -230,6 +230,7 @@ namespace FixedAssets.Controllers
             changeInValueItem.AssetName = asset.AssetName;
             changeInValueItem.ChangingDate = DateTime.Now;
             changeInValueItem.ReasonForChangings = db.T_ReasonForChangings.ToList();
+            changeInValueItem.ValueBeforeChange = asset.InitialValue;
             changeInValueItem.ValueAfterChange = asset.InitialValue;
 
             return View(changeInValueItem);
