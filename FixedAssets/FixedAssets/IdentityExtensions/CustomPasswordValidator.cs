@@ -14,14 +14,14 @@ namespace FixedAssets.IdentityExtensions
         {
             if (String.IsNullOrEmpty(item) || item.Length < RequiredLength)
             {
-                return Task.FromResult(IdentityResult.Failed(String.Format("Password should be of length {0}", RequiredLength)));
+                return Task.FromResult(IdentityResult.Failed(String.Format("Hasło musi mieć przynajmniej {0} znaków.", RequiredLength)));
             }
 
             string pattern = @"^(?=.*[0-9])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*0-9]{10,}$";
 
             if (!Regex.IsMatch(item, pattern))
             {
-                return Task.FromResult(IdentityResult.Failed("Dupa Blada!!!, Passwords must have at least one non letter or digit character. Passwords must have at least one digit ('0'-'9'). Passwords must have at least one uppercase ('A'-'Z')"));
+                return Task.FromResult(IdentityResult.Failed("Hasło powinno zawierać przynajmniej 1 znak specjalny, cyfrę ('0'-'9') oraz wielką literę ('A'-'Z')"));
             }
 
             return Task.FromResult(IdentityResult.Success);

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<FixedAssets.Models.Asset>
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Szczegóły";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
@@ -58,7 +58,7 @@
 </table>
 
 <div>
-        @Html.ActionLink("Powrót do listy wyposażenia", "Index")
+        @Html.ActionLink("Powrót do listy", "Index")
     </div>
 
 @section Scripts {

@@ -1,13 +1,13 @@
 ﻿@model FixedAssets.Logic.AssetDepreciationPlan
 @{
-    ViewBag.Title = "AssetDepreciationPlan";
+    ViewBag.Title = "Plan amortyzacji";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Plan Amortyzacja środka trwałego</h2>
+<h2>Plan amortyzacji środka trwałego</h2>
 <div>
     <hr />
     <table class="table">

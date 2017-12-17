@@ -248,9 +248,9 @@ namespace FixedAssets.Logic
         }
 
         public int Id { get; set; }
-        [Display(Name = "Nazwa wyposarzenia")]
+        [Display(Name = "Nazwa wyposażenia")]
         public string EquipmentName { get; set; }
-        [Display(Name = "Ilosć")]
+        [Display(Name = "Ilość")]
         public int Quantity { get; set; }
         [Display(Name = "Wartość wg. zakupu")]
         [DisplayFormat(DataFormatString = "{0:n2}", ApplyFormatInEditMode = false)]
@@ -270,7 +270,7 @@ namespace FixedAssets.Logic
         [Display(Name = "Data dyspozycji")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DisposalDate { get; set; }
-        [Display(Name = "Numer tyspozycji")]
+        [Display(Name = "Numer dyspozycji")]
         public int No { get; set; }
         [Display(Name = "Rok")]
         public int Year { get; set; }
