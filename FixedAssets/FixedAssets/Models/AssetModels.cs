@@ -49,6 +49,7 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
         public bool LowValueAsset { get; set; }
         public List<Asset> Assets { get; set; }
@@ -58,6 +59,7 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
         public List<Asset> Assets { get; set; }
     }
@@ -66,6 +68,7 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Nazwa")]
         public string Name { get; set; }
         public decimal DepreciationRate { get; set; }
         public List<Asset> Assets { get; set; }
