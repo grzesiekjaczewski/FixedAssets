@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "CanNotDelete";
+    ViewBag.Title = "Błąd";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Nie można usunąć rodzaju środka trwałego, jeśli jest on juz w użyciu.</h2>
+<h2>Nie można usunąć rodzaju środka trwałego, jeśli jest on już w użyciu.</h2>
 <div>
     @Html.ActionLink("Powrót do listy", "Index")
 </div>

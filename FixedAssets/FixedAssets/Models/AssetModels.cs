@@ -51,6 +51,7 @@ namespace FixedAssets.Models
         public int Id { get; set; }
         [Display(Name = "Nazwa")]
         public string Name { get; set; }
+        [Display(Name = "Czy wyposażenie")]
         public bool LowValueAsset { get; set; }
         public List<Asset> Assets { get; set; }
     }
@@ -70,6 +71,7 @@ namespace FixedAssets.Models
         public int Id { get; set; }
         [Display(Name = "Nazwa")]
         public string Name { get; set; }
+        [Display(Name = "Stawka %")]
         public decimal DepreciationRate { get; set; }
         public List<Asset> Assets { get; set; }
     }
