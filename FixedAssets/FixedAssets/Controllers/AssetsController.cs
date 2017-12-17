@@ -175,7 +175,7 @@ namespace FixedAssets.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EndOfLifeDisposal([Bind(Include = "AssetId,DisposalDate,EndOfLifeReason,CreatedBy,DisposalCompany")] EndOfLifeDosposalItem endOfLifeDisposalItem)
+        public ActionResult EndOfLifeDisposal([Bind(Include = "AssetId,EndOfLifeReason,CreatedBy,DisposalCompany")] EndOfLifeDosposalItem endOfLifeDisposalItem)
         {
             Asset asset = db.T_Assets.Find(endOfLifeDisposalItem.AssetId);
 
@@ -184,6 +184,7 @@ namespace FixedAssets.Controllers
             int no = 0;
 
             endOfLifeDisposal.Year = DateTime.Now.Year;
+            endOfLifeDisposalItem.DisposalDate = DateTime.Now;
 
             if (db.T_EndOfLifeDisposals.Where(e => e.Year == endOfLifeDisposal.Year).Count() == 0)
             {
