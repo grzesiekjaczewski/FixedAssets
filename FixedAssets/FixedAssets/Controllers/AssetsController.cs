@@ -192,6 +192,7 @@ namespace FixedAssets.Controllers
             else
             {
                 no = db.T_EndOfLifeDisposals.Where(e => e.Year == endOfLifeDisposal.Year).Max(e => e.No);
+                no++;
             }
 
             endOfLifeDisposal.No = no;
@@ -226,7 +227,7 @@ namespace FixedAssets.Controllers
 
             changeInValueItem.AssetId = asset.Id;
             changeInValueItem.AssetName = asset.AssetName;
-            changeInValueItem.ChangingDate = DateTime.Now.AddDays(10);
+            changeInValueItem.ChangingDate = DateTime.Now;
             changeInValueItem.ReasonForChangings = db.T_ReasonForChangings.ToList();
             changeInValueItem.ValueAfterChange = asset.InitialValue;
 

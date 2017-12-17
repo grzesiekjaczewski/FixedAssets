@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using FixedAssets.Models;
+using SendGrid;
+using System.Net;
 
 namespace FixedAssets
 {
@@ -19,7 +21,33 @@ namespace FixedAssets
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            return configSendGridasync(message);
+        }
+
+        private Task configSendGridasync(IdentityMessage message)
+        {
+            var myMessage = new SendGridMessage();
+            myMessage.AddTo(message.Destination);
+            myMessage.From = new System.Net.Mail.MailAddress(
+                          "grzesiek.jaczewski@gmail.com", "My name");
+            myMessage.Subject = message.Subject;
+            myMessage.Text = message.Body;
+            myMessage.Html = message.Body;
+
+            var credentials = new NetworkCredential("grzesiek.jaczewski@gmail.com", "1hab38cdr");
+
+            // Create a Web transport for sending email.
+            var transportWeb = new Web(credentials);
+
+            // Send the email.
+            if (transportWeb != null)
+            {
+                return transportWeb.DeliverAsync(myMessage);
+            }
+            else
+            {
+                return Task.FromResult(0);
+            }
         }
     }
 
