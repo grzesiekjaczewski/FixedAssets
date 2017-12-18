@@ -27,7 +27,7 @@ namespace FixedAssets
 
         private Task configSendGridasync(IdentityMessage message)
         {
-            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage("postmaster@kjaczewska.pl", message.Destination))
+            using (System.Net.Mail.MailMessage mm = new System.Net.Mail.MailMessage(ConfigurationManager.AppSettings["postmasterEmail"], message.Destination))
             {
                 mm.Subject = message.Subject;
                 mm.Body = message.Body;
@@ -37,8 +37,8 @@ namespace FixedAssets
                 {
                     using (System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient())
                     {
-                        smtp.Host = "mail.kjaczewska.pl";
-                        NetworkCredential NetworkCred = new NetworkCredential("postmaster@kjaczewska.pl", "Ycj2yshvgf65+");
+                        smtp.Host = ConfigurationManager.AppSettings["postmasterHost"];
+                        NetworkCredential NetworkCred = new NetworkCredential(ConfigurationManager.AppSettings["postmasterEmail"], ConfigurationManager.AppSettings["postmasterPassword"]);
                         smtp.UseDefaultCredentials = true;
                         smtp.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
                         smtp.Credentials = NetworkCred;
