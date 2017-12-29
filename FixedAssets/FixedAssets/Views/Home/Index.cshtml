@@ -1,7 +1,10 @@
 ﻿@{
     ViewBag.Title = "Strona Główna";
 }
-
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
 <div class="jumbotron">
     <div class="row">
         <div class="col-md-3">
