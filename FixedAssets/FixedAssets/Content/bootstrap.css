@@ -311,11 +311,12 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    /*podstawowy kolor czcionki*/
+    color: #2f3d8a;
+    background-color: #ffffff;
 }
 
 input,
@@ -3338,7 +3339,7 @@ input[type="button"].btn-block {
 
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
-  border-top: 0 dotted;
+ border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
 }
@@ -4501,17 +4502,22 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
-  border-color: #080808;
+    /* t³o paska menu*/
+    /*background-color: #222222;*/
+    background-color: #2f3d8a;
+    /*border-color: #080808;*/
+    border-color: #2f3d8a;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  /*color: #999999;*/
+  color: #FFFFFF;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  /*color: #ffffff;*/
+  color: #999999;
   background-color: transparent;
 }
 
@@ -4520,12 +4526,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  color: #999999;
+  /*color: #999999;*/
+color: #FFFFFF;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  /*color: #ffffff;*/
+  color: #999999;
   background-color: transparent;
 }
 
@@ -4928,19 +4936,28 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron {
-  padding: 30px;
+    /*padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #eeeeee;*/
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 21px;
+    /*font-weight: 200;
+    line-height: 2.1428571435;*/
+    color: inherit;
+    background-color: #FFFFFF;
 }
 
-.jumbotron h1 {
-  line-height: 1;
-  color: inherit;
-}
+    .jumbotron h1 {
+        /*line-height: 1;
+  color: inherit;*/
+        line-height: 1;
+        color: inherit;
+    }
 
 .jumbotron p {
   line-height: 1.4;
@@ -4951,17 +4968,22 @@ a.list-group-item.active > .badge,
 }
 
 @media screen and (min-width: 768px) {
-  .jumbotron {
-    padding-top: 48px;
-    padding-bottom: 48px;
-  }
-  .container .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
-  }
-  .jumbotron h1 {
-    font-size: 63px;
-  }
+    .jumbotron {
+        /*padding-top: 48px;
+    padding-bottom: 48px;*/
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+    .container .jumbotron {
+        /*padding-right: 60px;
+    padding-left: 60px;*/
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    .jumbotron h1 {
+        /*font-size: 63px;*/
+        font-size: 50px;
+    }
 }
 
 .thumbnail {
