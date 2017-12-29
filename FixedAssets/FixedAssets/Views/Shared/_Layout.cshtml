@@ -16,7 +16,6 @@
     @Scripts.Render("~/Scripts/correctioOfValidate.js")
 </head>
 <body>
-    @*<div id="wrapper">*@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -74,11 +73,10 @@
                 </div>
             </div>
         </div>
-    @*</div>*@
         <div class="container body-content">
             @RenderBody()
-            <hr />
             <footer>
+                <hr />
                 <p>&copy; 2017-@DateTime.Now.Year - Katarzyna Jaczewska, Tomasz Nawrat</p>
             </footer>
         </div>
