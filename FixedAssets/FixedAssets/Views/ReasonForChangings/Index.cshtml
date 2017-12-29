@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<FixedAssets.Models.ReasonForChanging>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Zmiana wartości";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Index</h2>
+<h2>Przyczyna zmiany wartości środka trwałego</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nowy", "Create")
 </p>
 <table class="table">
     <tr>
@@ -27,9 +27,9 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Edycja", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

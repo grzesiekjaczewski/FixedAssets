@@ -106,6 +106,7 @@ namespace FixedAssets.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Opis")]
         public string Description { get; set; }
         public List<ChangeInValue> ChangeInValues { get; set; }
     }

@@ -1,17 +1,17 @@
 ﻿@model FixedAssets.Models.AssetType
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Rodzaje środków trwałych";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Details</h2>
+<h2>Rodzaje środków trwałych</h2>
 
 <div>
-    <h4>AssetType</h4>
+    <h4>Rodzaj środka</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>

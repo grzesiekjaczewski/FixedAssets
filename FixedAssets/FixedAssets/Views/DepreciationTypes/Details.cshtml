@@ -1,17 +1,16 @@
 ﻿@model FixedAssets.Models.DepreciationType
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Rodzaj amortyzacji";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Details</h2>
+<h2>Rodzaj amortyzacji</h2>
 
 <div>
-    <h4>DepreciationType</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
