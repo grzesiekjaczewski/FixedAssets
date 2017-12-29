@@ -1,14 +1,14 @@
 ﻿@model FixedAssets.Models.EndOfLifeDisposal
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Dodawanie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Create</h2>
+<h2>Dodawanie</h2>
 
 
 @using (Html.BeginForm()) 

@@ -1,14 +1,14 @@
 ﻿@model FixedAssets.Models.ReasonForChanging
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Dodawanie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Create</h2>
+<h2>Dodaj</h2>
 
 
 @using (Html.BeginForm()) 
@@ -16,7 +16,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ReasonForChanging</h4>
+        <h4>Powody zmiany wartości środka trwałego</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Dodaj" class="btn btn-default" />
             </div>
         </div>
     </div>
