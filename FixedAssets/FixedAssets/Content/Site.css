@@ -15,19 +15,20 @@ body {
     /*height: 60px;*/
 }
 
-/*#wrapper {
-    min-height: 100%;
+
+
+#footermain {
     position: relative;
-}*/
+    bottom: auto;
+    width: auto;
+}
 
-/*#content{
-    padding-bottom: 100px;
-}*/
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 80%;
+@media screen and (min-width: 768px) {
+    #footermain {
+        position: absolute;
+        bottom: 0;
+        width: 80%;
+    }
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
