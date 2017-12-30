@@ -10,9 +10,11 @@ $(function () {
         modal: true,
         buttons: {
             "Usuń": function () {
-                $(this).dialog("close");
+                
                 //event.preventDefault();
+                //window.location.href = "/Admin/Delete/" + userid;
                 document.location.href = "/Admin/Delete/" + userid;
+                $(this).dialog("close");
             },
             "Anuluj": function () {
                 $(this).dialog("close");
