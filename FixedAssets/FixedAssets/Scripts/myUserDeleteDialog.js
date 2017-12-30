@@ -11,7 +11,7 @@ $(function () {
         buttons: {
             "Usuń": function () {
                 $(this).dialog("close");
-                event.preventDefault();
+                //event.preventDefault();
                 document.location.href = "/Admin/Delete/" + userid;
             },
             "Anuluj": function () {

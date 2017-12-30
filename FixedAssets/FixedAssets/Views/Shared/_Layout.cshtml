@@ -75,10 +75,13 @@
         </div>
         <div class="container body-content">
             @RenderBody()
-            <footer>
-                <hr />
-                <p>&copy; 2017-@DateTime.Now.Year - Katarzyna Jaczewska, Tomasz Nawrat</p>
-            </footer>
+            @if (@ViewBag.Title != "Strona Główna")
+            {
+                <footer>
+                    <hr />
+                    <p>&copy; 2017-@DateTime.Now.Year - Katarzyna Jaczewska, Tomasz Nawrat</p>
+                </footer>
+            }
         </div>
 
 </body>
