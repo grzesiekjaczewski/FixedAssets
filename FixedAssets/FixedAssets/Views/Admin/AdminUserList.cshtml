@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<FixedAssets.Models.ApplicationUser>
 @Scripts.Render("~/Scripts/myUserDeleteDialog.js")
 @{
-    ViewBag.Title = "AdminUserList";
+    ViewBag.Title = "Użytkownicy";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Lista użytkowników</h2>
+<h3>Lista użytkowników</h3>
 <table class="table">
     <tr>
         <th>Użytkownik</th>

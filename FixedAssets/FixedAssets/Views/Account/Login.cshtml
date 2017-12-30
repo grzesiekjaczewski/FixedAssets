@@ -4,7 +4,12 @@
     ViewBag.Title = "Logowanie";
 }
 
-<h2>@ViewBag.Title.</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+
+<h3>@ViewBag.Title.</h3>
 
 <section id="loginForm">
     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))

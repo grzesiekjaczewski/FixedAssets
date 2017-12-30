@@ -1,14 +1,14 @@
 ﻿@model FixedAssets.Models.ReasonForChanging
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edycja";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Edit</h2>
+<h3>Edycja powodu zmiany wartości środka trwałego</h3>
 
 
 @using (Html.BeginForm())
@@ -16,7 +16,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Powód zmiany wartości środka trwałego</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

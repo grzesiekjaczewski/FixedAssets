@@ -3,7 +3,12 @@
     ViewBag.Title = "Ustawienia konta";
 }
 
-<h2>@ViewBag.Title.</h2>
+@if (Request.IsAuthenticated && User.IsInRole("Supervisor") && User.IsInRole("Admin"))
+{
+    <p class="under-menu"><br /></p>
+}
+
+<h3>@ViewBag.Title.</h3>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>

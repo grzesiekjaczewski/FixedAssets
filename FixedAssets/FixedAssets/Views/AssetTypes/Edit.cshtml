@@ -8,7 +8,7 @@
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Edycja</h2>
+<h3>Edycja rodzaju środka trwałego</h3>
 
 
 @using (Html.BeginForm())
@@ -16,7 +16,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Rodzaj środka trwałego</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

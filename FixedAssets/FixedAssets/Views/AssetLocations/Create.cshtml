@@ -8,7 +8,8 @@
 {
     <p class="under-menu"><br /></p>
 }
-<h2>Dodawanie</h2>
+
+<h3>Dodawanie lokalizacji</h3> 
 
 
 @using (Html.BeginForm()) 
@@ -16,7 +17,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Lokalizacja</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
